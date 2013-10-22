@@ -1,0 +1,12 @@
+= render 'error_messages', object: @post
+= form_for @post do |post|
+  .form-group
+    = post.label :category_tokens, "Category"
+    = post.text_field :category_tokens, class: 'form-control input-lg', placeholder: "categorias", data: {load: @post.categories.map(&:attributes)}
+  .form-group
+    = post.label :title
+    = post.text_field :title, class: 'form-control input-lg', placeholder: "um título bem pensado"
+  .form-group
+    = post.label :content
+    = post.text_area :content, rows: 30, class: 'form-control input-lg', placeholder: "um texto articulado"
+  = post.submit "done", class: 'btn btn-block btn-lg btn-success'
