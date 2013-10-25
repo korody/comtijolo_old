@@ -1,0 +1,7 @@
+.col.col-lg-4
+  = div_for attachment
+    .thumbnail.pull-left
+      = image_tag attachment.file_url(:regular).to_s
+      .thumbnail-note
+        = attachment.note
+        = link_to "x", post_attachment_path(@post, attachment), class: 'pull-right', method: "delete", remote: true

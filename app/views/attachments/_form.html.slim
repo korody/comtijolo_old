@@ -1,0 +1,7 @@
+= form_for Attachment.new, url: post_attachments_path(@post.id) do |attachment|
+  .form-group
+    = attachment.label :attachments, class: 'sr-only'
+    .file-input-wrapper
+      .custom-file-field
+        span #{content_tag :span, "Selecione vários arquivos", class: 'file-input-link'} ou arraste os mesmos para esta tela.
+      = attachment.file_field :file, multiple: true, name: "attachment[file]", class: 'browser-file-field'

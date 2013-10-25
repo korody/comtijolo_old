@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
   #  REVISE for skinny controller
 
   def show
-    @category = Category.find(params[:id])
+    @category = Category.find_by_name(params[:id])
     @posts = @category.posts
   end
 
@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    params.require(:category).permit(:category)
+    params.require(:category).permit(:name)
   end
 
 end

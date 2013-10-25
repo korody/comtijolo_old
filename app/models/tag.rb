@@ -1,7 +1,7 @@
-class Category < ActiveRecord::Base
+class Tag < ActiveRecord::Base
 
-  has_many :post_categories, dependent: :destroy
-  has_many :posts, through: :post_categories
+  has_many :taggings, dependent: :destroy
+  has_many :posts, through: :taggings
 
   def to_param
     name.parameterize

@@ -4,9 +4,12 @@ Comtijolo::Application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   
-  resources :posts
+  resources :posts do
+    resources :attachments, only: [:create, :destroy]
+  end
 
   resources :categories
+  resources :tags
 
   # get 'tags/:tag', to: 'posts#index', as: :tag
 

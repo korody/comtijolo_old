@@ -1,6 +1,9 @@
 .post
-  h2 = link_to post.title, post
+  h2 = link_to post.name, post
   h4 = raw post.categories.pluck(:name).map { |c| link_to c, category_path(c), class: 'category-link' }.join(', ')
   p.content = raw(post.content).gsub(/\n/, '<br/>').html_safe
-  = link_to icon_tag('pencil'), edit_post_path(post)
-  = link_to icon_tag('trash'), post, method: :delete
+  .post-footer
+    = raw post.tags.pluck(:name).map { |t| link_to t, tag_path(t), class: 'tag-link' }.join(', ')
+    .pull-right 
+      = link_to icon_tag('pencil'), edit_post_path(post), class: 'actions-link'
+      = link_to icon_tag('trash'), post, class: 'actions-link', method: :delete

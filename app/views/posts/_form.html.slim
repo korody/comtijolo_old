@@ -1,12 +1,20 @@
 = render 'error_messages', object: @post
+= render 'attachments/form'
+= render 'layouts/progress_bar'
+.upload-gallery
+  - if @post.attachments.any?
+    = render 'attachments/upload_gallery'
 = form_for @post do |post|
   .form-group
-    = post.label :category_tokens, "Category"
+    = post.label :category_tokens, "Categories"
     = post.text_field :category_tokens, class: 'form-control input-lg', placeholder: "categorias", data: {load: @post.categories.map(&:attributes)}
   .form-group
-    = post.label :title
-    = post.text_field :title, class: 'form-control input-lg', placeholder: "um título bem pensado"
+    = post.label :name
+    = post.text_field :name, class: 'form-control input-lg', placeholder: "um título bem pensado"
   .form-group
     = post.label :content
     = post.text_area :content, rows: 30, class: 'form-control input-lg', placeholder: "um texto articulado"
+  .form-group
+    = post.label :tag_tokens, "Tags"
+    = post.text_field :tag_tokens, class: 'form-control input-lg', placeholder: "tags", data: {load: @post.tags.map(&:attributes)}
   = post.submit "done", class: 'btn btn-block btn-lg btn-success'

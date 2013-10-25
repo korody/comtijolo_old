@@ -1,7 +1,7 @@
 .wall
-  .col.col-lg-4.col-lg-offset-4 
+  .col.col-lg-5.col-lg-offset-2 
     ul.nav.nav-tabs.nav-justified
-      - Category.limit(6).each do |category|
+      - Category.all.each do |category|
         li
           = link_to category.name, category_path(category)
     / = link_to "new post", new_post_path(@post), class: 'btn btn-lg btn-block btn-info'

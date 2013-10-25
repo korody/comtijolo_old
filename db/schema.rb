@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131021212817) do
+ActiveRecord::Schema.define(version: 20131022214304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachments", force: true do |t|
+    t.string   "file"
+    t.text     "note"
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attachments", ["attachable_id", "attachable_type"], name: "index_attachments_on_attachable_id_and_attachable_type", using: :btree
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -34,7 +45,7 @@ ActiveRecord::Schema.define(version: 20131021212817) do
   add_index "post_categories", ["post_id"], name: "index_post_categories_on_post_id", using: :btree
 
   create_table "posts", force: true do |t|
-    t.string   "title"
+    t.string   "name"
     t.text     "content"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -42,5 +53,21 @@ ActiveRecord::Schema.define(version: 20131021212817) do
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "taggings", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "taggings", ["post_id"], name: "index_taggings_on_post_id", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
