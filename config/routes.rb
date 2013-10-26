@@ -5,7 +5,8 @@ Comtijolo::Application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   
   resources :posts do
-    resources :attachments, only: [:create, :destroy]
+    resources :attachments, only: [:create, :destroy, :update]
+    resources :videos, only: [:create, :destroy, :update]
   end
 
   resources :categories

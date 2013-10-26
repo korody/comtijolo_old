@@ -1,4 +1,4 @@
 .attachments-list.clearfix
   .row
     - @post.attachments.each do |attachment|
-      = render attachment
+      = render 'attachments/gallery_attachment', attachment: attachment

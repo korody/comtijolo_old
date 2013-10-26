@@ -9,10 +9,18 @@
 
   .post
     border-left: 1px solid $border
-    padding: 0 20px 10px
-    margin: 30px 0
+    padding: 0 20px
+    margin: 0 0 60px
+
+    .post-photos, .post-videos
+      margin-left: -20px
+
+    p.note
+      padding: 10px 0 0 20px  
 
     .post-footer
+      border-bottom: 1px solid $border
+      padding: 20px 0 10px 
 
       i
         margin: 0 8px
@@ -26,14 +34,9 @@ p.content, textarea#post_content
 //  EDIT post
 
 .edit-post
-  margin: 40px 0 100px
+  margin: 40px 0 80px
 
-
-//  FILE UPLOADER
-
-.attachments-list
-  // border: 1px solid $border
-  // border-radius: 6px
+.attachments-list, .videos-list
 
   .thumbnail
     margin-bottom: 30px
@@ -55,13 +58,15 @@ td.progress-wrapper
 
 
 .file-input-wrapper
+  color: $text-medium
   border: 2px dashed $border
   border-radius: 6px
+  font-size: 18px
   height: 45px
   position: relative
 
   .custom-file-field
-    padding: 10px
+    padding: 10px 20px
 
   .browser-file-field
     cursor: pointer
@@ -76,4 +81,25 @@ td.progress-wrapper
 
   .file-input-link
     color: $comtijolo
+
+.video-button
+  margin-bottom: 30px
+
+  .btn
+    text-align: left
+    text-indent: 20px
+
+  .button-collapse
+    border-left: 1px solid $border
+    display: none
+
+    input.form-control, textarea.form-control
+      border: 1px solid $border
+      border-bottom: 1px solid white
+      border-left: 1px solid white
+      border-right: 1px solid white
+      border-radius: 0
+      box-shadow: none
+
+
 

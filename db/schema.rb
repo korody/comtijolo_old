@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131022214304) do
+ActiveRecord::Schema.define(version: 20131025165355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,5 +69,17 @@ ActiveRecord::Schema.define(version: 20131022214304) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "videos", force: true do |t|
+    t.string   "title"
+    t.string   "link"
+    t.text     "note"
+    t.integer  "filmable_id"
+    t.string   "filmable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "videos", ["filmable_id", "filmable_type"], name: "index_videos_on_filmable_id_and_filmable_type", using: :btree
 
 end

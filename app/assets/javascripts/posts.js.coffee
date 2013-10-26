@@ -1,3 +1,12 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+jQuery ->
+  $('.best_in_place').best_in_place()
+
+$('#video-collapse').click ->
+  button = $(this);
+  collapsible = button.next('.button-collapse');
+  collapsible.toggle(800).addClass('colapsed')
+  button.button('reset')
+
+$('#create-video').click ->
+  $this = $(this);
+  $this.button('loading')

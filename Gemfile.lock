@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/bernat/best_in_place.git
+  revision: df178520bf9ba405baee9528d5dbb630d6ff760c
+  specs:
+    best_in_place (2.1.0)
+      jquery-rails
+      rails (>= 3.1)
+
+GIT
   remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
   revision: 0e88056ac5d58fb0bbd23d3fe929eac01712d964
   branch: 3
@@ -39,6 +47,7 @@ GEM
       builder
       mime-types
       xml-simple
+    bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
     builder (3.1.4)
     carrierwave (0.9.0)
@@ -89,6 +98,7 @@ GEM
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.7.0)
+    nokogiri (1.5.10)
     nokogiri (1.5.10-x86-mingw32)
     pg (0.17.0-x86-mingw32)
     polyglot (0.3.3)
@@ -160,6 +170,7 @@ PLATFORMS
 DEPENDENCIES
   aws-s3
   bcrypt-ruby (~> 3.0.0)
+  best_in_place!
   bootstrap-sass!
   carrierwave (>= 0.5.3)
   coffee-rails (~> 4.0.0)

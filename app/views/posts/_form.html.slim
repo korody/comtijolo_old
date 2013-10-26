@@ -1,9 +1,16 @@
 = render 'error_messages', object: @post
 = render 'attachments/form'
-= render 'layouts/progress_bar'
+= render 'layouts/template'
 .upload-gallery
   - if @post.attachments.any?
     = render 'attachments/upload_gallery'
+.video-button
+  a.btn.btn-default.btn-lg.btn-block#video-collapse type='button' data-toggle='button' data-complete-text="video adicionado :)" adicionar video
+  .button-collapse
+    = render 'videos/form'
+.video-gallery
+  - if @post.videos.any?
+    = render 'videos/video_gallery'
 = form_for @post do |post|
   .form-group
     = post.label :category_tokens, "Categories"

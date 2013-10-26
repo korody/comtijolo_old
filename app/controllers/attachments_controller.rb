@@ -1,13 +1,10 @@
 class AttachmentsController < ApplicationController
   respond_to :html, :js, :json
 
-  def new
-    @attachment = Attachment.new
-  end
-
   def create
     @post = Post.find(params[:post_id])
-    @attachment = @post.attachments.create(attachment_params)
+    @attachment = @post.attachments.build(attachment_params)
+    @attachment.save!
   end
     
   def update

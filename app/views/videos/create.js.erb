@@ -1,0 +1,16 @@
+var $form = $('.button-collapse.colapsed'), 
+    $video = $form.prev('.btn.active'); 
+
+<% if @video.valid? %>
+  $form.toggle(800);
+  $form.hide(800).html("<%= j render 'videos/form', video: @video %>");
+  $video.button('complete');
+  $video.toggleClass('active')
+  <% if @post.videos.count == 1 %>
+    $(".video-gallery").after("<%= j render 'video_gallery' %>");
+  <% else %>
+    $(".videos-list .col-lg-12:last-child").after("<%= j render 'gallery_video', video: @video %>");
+  <% end %>
+<% else %>
+  $form.html("<%= j render 'videos/form', video: @video %>");
+<% end %>

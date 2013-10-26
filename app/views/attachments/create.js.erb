@@ -2,8 +2,8 @@
   alert("pera que deu pêra! <%= j @attachment.errors.full_messages.join(', ').html_safe %>");
 <% else %>
   <% if @post.attachments.count == 1 %>
-    $(".upload-gallery").after("<%= j render 'upload_gallery' %>");
+    $(".upload-gallery").after("<%= j render 'gallery_attachment' %>");
   <% else %>
-    $(".attachments-list .col-lg-4:last-child").after("<%= j render @attachment %>");
+    $(".attachments-list .col-lg-4:last-child").after("<%= j render 'gallery_attachment', attachment: @attachment %>");
   <% end %>
 <% end %>

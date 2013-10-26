@@ -1,0 +1,4 @@
+.videos-list.clearfix
+  .row
+    - @post.videos.each do |video|
+      = render 'videos/gallery_video', video: video

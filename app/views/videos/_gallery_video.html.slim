@@ -1,0 +1,9 @@
+.col.col-lg-12
+  = div_for video
+    .thumbnail
+      .video-container
+        iframe src=video.link frameborder='0' allowfullscreen
+      .thumbnail-note.clearfix
+        / p = video.title
+        = best_in_place [@post, video], :note
+        = link_to "x", post_video_path(@post, video), class: 'pull-right', method: "delete", remote: true

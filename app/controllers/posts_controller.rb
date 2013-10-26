@@ -7,10 +7,12 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @post.attachments.build
   end
 
   def edit
     @post = Post.find(params[:id])
+    @video = Video.new
   end
 
   def show
@@ -35,7 +37,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:name, :content, :user, :category_tokens, :tag_tokens)
+    params.require(:post).permit(:name, :content, :user, :category_tokens, :tag_tokens, videos_attributes: [:title, :note, :link])
   end
 
 end

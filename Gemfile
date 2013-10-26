@@ -20,6 +20,7 @@ gem 'carrierwave', '>= 0.5.3'
 gem "fog", "~> 1.3.1"
 gem 'aws-s3'
 gem 'jquery-fileupload-rails'
+gem 'best_in_place', github: 'bernat/best_in_place'
 
 group :development do
   gem 'faker'

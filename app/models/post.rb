@@ -10,6 +10,9 @@ class Post < ActiveRecord::Base
   has_many :tags, through: :taggings
 
   has_many :attachments, as: :attachable, dependent: :destroy
+  has_many :videos, as: :filmable
+
+  # accepts_nested_attributes_for :attachments, :videos  
 
   def to_param
     "#{id}-#{name.parameterize}"
