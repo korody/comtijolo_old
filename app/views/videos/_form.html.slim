@@ -1,4 +1,4 @@
-= render 'error_messages', object: @video
+= render 'errors', object: @video
 = form_for [@post, @video], url: post_videos_path(@post), method: :post, remote: true do |video|
   / = video.hidden_field :filmable_type, value: filmable.class.name
   = video.label :title, class: 'sr-only'

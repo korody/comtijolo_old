@@ -1,0 +1,4 @@
+= form_tag password_resets_path, class: 'form-reset' do
+  = text_field_tag :email, params[:email], class: 'form-control input-lg', placeholder: 'email', autofocus:''
+  = submit_tag "redefinir", class: 'btn btn-lg btn-success btn-block'
+  p = link_to "Lembrou sua senha?", signin_path

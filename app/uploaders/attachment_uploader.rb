@@ -30,7 +30,7 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   end
 
   version :regular do
-    process :resize_to_fill => [600, 338]
+    process :resize_to_fill => [700, 394]
   end
 
   def extension_white_list

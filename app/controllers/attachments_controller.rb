@@ -3,8 +3,7 @@ class AttachmentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @attachment = @post.attachments.build(attachment_params)
-    @attachment.save!
+    @attachment = @post.attachments.create(attachment_params)
   end
     
   def update

@@ -1,0 +1,72 @@
+@import 'presets'
+
+fieldset
+  margin-bottom: 40px
+
+form
+  margin-bottom: 20px
+
+legend
+  border: 0
+
+
+// SESSIONS, SIGNUPS, REALTOR_PROFILES
+
+
+.form-signin, .new_user, .form-reset, .new_realtor_profile
+  margin: 0 auto
+  max-width: 330px
+
+  input.btn
+    margin-bottom: 20px
+    text-align: left
+    text-indent: 18px
+
+  p
+    margin-left: 4px
+
+.form-signin .checkbox
+  font-weight: normal
+
+.form-signin .form-control:focus
+  z-index: 2
+
+.form-signin input#email, .new_user input#user_name, #realtor_profile_creci, .edit_user input#user_name
+  border-bottom-left-radius: 0
+  border-bottom-right-radius: 0
+  margin-bottom: -1px
+
+.form-signin label.checkbox input
+  margin: 2px 0 0 -18px
+
+.new_user input#user_email, #realtor_profile_user_name, , #realtor_profile_user_email, .edit_user input#user_email, .edit_user input#user_phone
+  border-radius: 0
+  margin-bottom: -1px
+
+.form-signin input#password, .new_user input#user_password, #realtor_profile_user_password, .edit_user input#user_password
+  border-top-left-radius: 0
+  border-top-right-radius: 0
+  margin-bottom: 10px
+
+.form-reset input#email
+  margin-bottom: 10px
+
+.checkbox
+  margin-top: 5px
+
+
+// NEW PROPERTY FORM
+
+
+.form-group
+
+  i.icon-spinner.icon-spin.address-ajax-spin
+    display: none
+
+  i.icon-bug.address-ajax-bug
+    display: none
+
+.progress.bar
+  background: blue
+  height: 200px
+  margin: 200px 0

@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
-  # before_action :require_login, except: [:show, :index] 
+  before_action :require_login, except: [:show, :index] 
 
   def index
     @posts = Post.all(limit: 10)
   end
 
   def new
-    @post = Post.new
+    @post = current_user.posts.build
     @post.attachments.build
   end
 

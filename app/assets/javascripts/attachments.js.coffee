@@ -3,7 +3,7 @@ jQuery.fn.bindFileUploader = ->
     dataType: 'script'
     add: (e, data) ->
       data.context = $(tmpl("template-upload", data.files[0]))
-      $('tbody.attachments').append data.context
+      $('.upload-gallery').append data.context
       data.submit()
     progress: (e, data) ->
       if data.context
