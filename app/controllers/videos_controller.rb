@@ -1,14 +1,8 @@
 class VideosController < ApplicationController
   respond_to :html, :js, :json
 
-  def new
-    video = Video.new
-  end
-
   def create
-    @post = Post.find(params[:post_id])
-    @video = @post.videos.create(video_params)
-    respond_with(@video)
+    @video = Video.create(video_params) 
   end
     
   def update
@@ -26,6 +20,6 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:title, :note, :link)
+    params.require(:video).permit(:title, :note, :link, :filmable_type)
   end
 end

@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_digest
       t.string :reset_token
       t.datetime :reset_token_sent_at
+      t.string :slug, index: true
 
       t.timestamps
     end

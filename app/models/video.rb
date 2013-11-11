@@ -4,4 +4,6 @@ class Video < ActiveRecord::Base
 
   validates :link, presence: true
 
+  before_save { self.link = link.gsub("watch?v=", "embed/").gsub("http://www", "https://www") }
+
 end

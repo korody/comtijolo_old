@@ -1,4 +1,4 @@
 .edit-post.clearfix
-  .col.col-lg-5.col-lg-offset-2
-    h3 = "new post #{link_to 'cancel', @post, class: 'btn btn-default btn-xs pull-right'}".html_safe
-    = render 'form', post: @post
+  = debug params
+  h3 = "new post #{link_to 'cancel', @post, class: 'btn btn-default btn-xs pull-right'}".html_safe
+  = render 'form', post: @post

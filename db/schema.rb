@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20131027101514) do
   create_table "categories", force: true do |t|
     t.string   "name"
     t.text     "description"
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 20131027101514) do
   create_table "posts", force: true do |t|
     t.string   "name"
     t.text     "content"
+    t.string   "slug"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -66,6 +68,7 @@ ActiveRecord::Schema.define(version: 20131027101514) do
 
   create_table "tags", force: true do |t|
     t.string   "name"
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -78,6 +81,7 @@ ActiveRecord::Schema.define(version: 20131027101514) do
     t.string   "password_digest"
     t.string   "reset_token"
     t.datetime "reset_token_sent_at"
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

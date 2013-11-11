@@ -1,4 +1,75 @@
 @import 'presets'
 
-.navbar-default
-  background-color: white
+body
+  // background-color: #F7F5DC
+  background-color: $base
+
+.header
+
+  .header-toolbar
+    max-height: 300px
+    min-height: 300px
+    overflow: hidden
+
+    .page-header
+      border: 0
+      margin: 0
+      padding: 100px 0 0 20px
+
+    h2
+      color: $comtijolo
+      margin: 0
+
+    p
+      margin: 0
+
+  .nav-tabs-justified > li > a, .nav-tabs.nav-justified > li > a
+    border-bottom: 1px solid $base
+
+    &:hover
+      border: 1px solid $base
+      border-bottom: 1px solid white
+
+    &#home
+      background: url('home.png') no-repeat center
+      // background-size: cover 
+
+    &#relationship
+      background: url('relationship.png') no-repeat center
+      // background-size: cover 
+
+    &#health
+      background: url('health.png') no-repeat center
+      // background-size: cover 
+
+    &#inspiration
+      background: url('inspiration.png') no-repeat center
+      // background-size: cover 
+
+    &#out
+      background: url('out.png') no-repeat center
+      // background-size: cover 
+
+.page-logo
+  max-height: 300px
+  min-height: 300px
+  // background: url('logo.png') no-repeat bottom
+  // background-size: cover 
+  // height: 300px
+  
+.search-form
+
+  form
+    margin: 0
+    padding: 3px 0
+
+  input#query
+    background-color: transparent
+    border: 0
+    border-left: 1px solid $comtijolo
+    box-shadow: none
+
+  .btn.btn-default
+    background-color: $base
+    border: 0
+    border-right: 1px solid $comtijolo

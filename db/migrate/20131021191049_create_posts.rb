@@ -3,6 +3,7 @@ class CreatePosts < ActiveRecord::Migration
     create_table :posts do |t|
       t.string :name
       t.text :content
+      t.string :slug, index: true
       t.belongs_to :user, index: true
 
       t.timestamps

@@ -1,4 +1,5 @@
-= form_for [@post, Attachment.new] do |attachment|
+= form_for Attachment.new do |attachment|
+  = attachment.hidden_field :attachable_type, value: attachable.class.name
   .form-group
     = attachment.label :attachments, class: 'sr-only'
     .file-input-wrapper

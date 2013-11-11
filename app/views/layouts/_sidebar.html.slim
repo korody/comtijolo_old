@@ -1,0 +1,20 @@
+= yield :sidebar
+article
+  = render 'posts/hot_posts'
+article
+  h4 tags em tijolos
+  .pill-wall
+    .nav.nav-pills
+      - @tags.each do |t|
+        - if params[:controller] == "categories"
+          li = link_to t.name, category_path(tag: t.name.parameterize)
+        - elsif params[:controller] == "posts"
+          li = link_to t.name, tag_path(t)
+/ article
+  h4 tijolo por tijolo
+  .pill-wall
+    .nav.nav-pills
+      - @posts_by_month.each do |month, posts|
+        li = link_to month.strftime('%B%y').downcase.html_safe, nil
+article
+  h4 rss feed

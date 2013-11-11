@@ -1,6 +1,6 @@
 # encoding:   utf-8
 class UserMailer < ActionMailer::Base
-  default from: "hello@gingawhat.com"
+  default from: "ola@comtijolo.com"
 
   def password_reset(user)
     @user = user

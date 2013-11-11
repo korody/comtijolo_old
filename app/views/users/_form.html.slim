@@ -1,0 +1,27 @@
+= render 'errors', object: @user
+= render 'attachments/form', attachable: @user
+= render 'layouts/template'
+.upload-gallery
+  = render 'attachments/upload_gallery', object: @user
+.video-button
+  a.btn.btn-default.btn-lg.btn-block#video-collapse type='button' data-toggle='button' data-complete-text="video adicionado :)" adicionar video
+  .button-collapse
+    = render 'videos/form', filmable: @user
+.video-gallery
+= render 'videos/video_gallery', object: @user
+= form_for @user, data: { attachable: 'User', filmable: 'User' } do |user|
+  = user.hidden_field :attachment_ids, class: 'attachable_attachment_ids'
+  = user.hidden_field :video_ids, class: 'filmable_video_ids'
+  .form-group
+    = user.label :name
+    = user.text_field :name, class: 'form-control input-lg', placeholder: "um título bem pensado"
+  .form-group
+    = user.label :email
+    = user.email_field :email, class: 'form-control input-lg', placeholder: 'e-mail'
+  .form-group
+    = user.label :bio
+    = user.text_area :bio, rows: 30, class: 'form-control input-lg', placeholder: "um texto articulado"
+  .form-group
+    = user.label :password
+    = user.password_field :password, class: 'form-control input-lg', placeholder: 'senha'
+  = user.submit "done", class: 'btn btn-block btn-lg btn-success'

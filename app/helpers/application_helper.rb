@@ -7,4 +7,8 @@ module ApplicationHelper
   def icon_tag(icon, css_class = nil)
     "<i class='icon-#{icon} #{css_class}'></i>".html_safe
   end
+
+  # def nested_page_path(post)
+  #   "/" + (post.ancestors + [post]).map(&:to_param).join("/")
+  # end
 end

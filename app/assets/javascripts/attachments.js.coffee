@@ -19,7 +19,7 @@ jQuery.fn.bindFileUploader = ->
       $('.btn-upload').show()
 
 $ ->
-  $('#new_attachment').bindFileUploader() if $('#new_attachment')
+  $('#attachment_file').bindFileUploader() if $('#attachment_file')
 
 $(document).on 'page:load', ->
-  $('#new_attachment').bindFileUploader() if $('#new_attachment')
+  $('#attachment_file').bindFileUploader() if $('#attachment_file')

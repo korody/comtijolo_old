@@ -1,0 +1,5 @@
+- content_for(:sidebar) do
+  article
+    = link_to image_tag('casal.png', class: 'img-responsive'), users_path
+    p.sidebar_intro Nós somos um casal de namorados, parceiros, amigos coloridos - que seja, sem rótulos por favor. Decidimos saltar do ninho, abrir as asas da liberdade, enfrentar o desconhecido e registrar o percurso. Sim, vamos sair da casa dos pais, morar juntos e escrever um blog. Loucos desvairados, uma blasfêmia! Não! O dinheiro é escasso, a cidade intimidante e o tempo curto - mas vamos mostrar que é possível e, esperamos, prazeroso.
+= render file: 'layouts/application'

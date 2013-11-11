@@ -1,17 +1,17 @@
 = render 'errors', object: @post
-= render 'attachments/form'
+= render 'attachments/form', attachable: @post
 = render 'layouts/template'
 .upload-gallery
-  - if @post.attachments.any?
-    = render 'attachments/upload_gallery'
+  = render 'attachments/upload_gallery', object: @post
 .video-button
   a.btn.btn-default.btn-lg.btn-block#video-collapse type='button' data-toggle='button' data-complete-text="video adicionado :)" adicionar video
   .button-collapse
-    = render 'videos/form'
+    = render 'videos/form', filmable: @post
 .video-gallery
-  - if @post.videos.any?
-    = render 'videos/video_gallery'
-= form_for @post do |post|
+  = render 'videos/video_gallery', object: @post
+= form_for @post, data: { attachable: 'Post', filmable: 'Post' } do |post|
+  = post.hidden_field :attachment_ids, class: 'attachable_attachment_ids'
+  = post.hidden_field :video_ids, class: 'filmable_video_ids'
   .form-group
     = post.label :category_tokens, "Categories"
     = post.text_field :category_tokens, class: 'form-control input-lg', placeholder: "categorias", data: {load: @post.categories.map(&:attributes)}

@@ -1,0 +1,17 @@
+.post
+  h2 = "#{link_to user.name, user} <p class='post-date pull-right'>24</p>".html_safe
+  .post-photos
+    = render 'attachments/first_image', object: user
+  p.content = raw(user.bio).gsub(/\n/, '<br/>').html_safe
+  .post-photos
+    - user.attachments.reverse.each_with_index do |attachment, i|
+      = content_tag 'div', class: "#{i == 0 ? 'hidden' : ''}" do
+        = render attachment
+  .post-videos
+    - user.videos.each do |video|
+      = render video
+  .post-footer
+    .pull-right
+      - if signed_in?
+        = link_to icon_tag('pencil'), edit_user_path(user), class: 'actions-link'
+        = link_to icon_tag('trash'), user, class: 'actions-link', method: :delete

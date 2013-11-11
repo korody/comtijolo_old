@@ -1,12 +1,12 @@
 $(function() {
 
-  $("#post_category_tokens").tokenInput("/categories.json", {
+  $("#post_category_tokens").tokenInput("/categories/autocomplete", {
     crossDomain: false,
     prePopulate: $("#post_category_tokens").data("load"),
     preventDuplicates: true
   });
 
-  $("#post_tag_tokens").tokenInput("/tags.json", {
+  $("#post_tag_tokens").tokenInput("/tags/autocomplete", {
     crossDomain: false,
     prePopulate: $("#post_tag_tokens").data("load"),
     preventDuplicates: true

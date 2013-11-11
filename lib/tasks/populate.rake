@@ -14,7 +14,7 @@ def make_posts
   6.times do |n|
     name = Faker::Company.name
     content = Faker::Lorem.sentence(400)
-    Post.create!(name: name, content: content, user_id: '3')
+    Post.create!(name: name, content: content, user_id: '1')
   end
 end
 

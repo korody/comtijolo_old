@@ -1,0 +1,4 @@
+h4 comtijolo recomenda
+.sidebar-posts
+  - Post.all.last(1).each do |post|
+    = render 'attachments/first_image', object: post

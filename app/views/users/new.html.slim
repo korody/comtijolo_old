@@ -1,7 +1,1 @@
-= render 'errors', object: @user
-= form_for @user do |f|
-  / = render 'images/user_form'  
-  = f.text_field :name, class: 'form-control input-lg', placeholder: 'nome', autofocus:''
-  = f.email_field :email, class: 'form-control input-lg', placeholder: 'e-mail'
-  = f.password_field :password, class: 'form-control input-lg', placeholder: 'senha'
-  = f.submit 'cadastrar', class: 'btn btn-lg btn-block btn-success'
+= render 'form'

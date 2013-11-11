@@ -1,9 +1,13 @@
 # encoding: UTF-8
 class SessionsController < ApplicationController
   def new
+    @disable_header = true
+    @disable_sidebar = true
   end
 
   def create
+    @disable_header = true
+    @disable_sidebar = true
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       sign_in user

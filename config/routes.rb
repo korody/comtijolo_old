@@ -11,21 +11,29 @@ Comtijolo::Application.routes.draw do
 
   resources :password_resets, only: [:new, :create, :edit, :update]
   
-  resources :posts do
+  resources :posts, path: "", except: [:index, :new, :create]
+
+  resources :posts, only: [:index, :new, :create] do
     resources :attachments, only: [:create, :destroy, :update]
     resources :videos, only: [:create, :destroy, :update]
   end
 
+  resources :attachments, only: [:create, :destroy, :update]
+  resources :videos, only: [:create, :destroy, :update]
+
+  get 'categories/autocomplete', to: 'categories#autocomplete'
+  get 'tags/autocomplete', to: 'tags#autocomplete'
+
   resources :categories
-  resources :tags
+  resources :tags, only: [:index, :show]
 
   # get 'tags/:tag', to: 'posts#index', as: :tag
-
-  get '/tijolo',   to: 'posts#index', as: 'tijolo'
+  get 'tags/:tag', to: 'categories#show'
   
   match '/contact', to: 'contact#new',    via: :get
   match '/contact', to: 'contact#create', via: :post
 
   root to: 'posts#index' 
 
+  get '*id', to: 'posts#index'
 end

@@ -2,8 +2,7 @@ class AttachmentsController < ApplicationController
   respond_to :html, :js, :json
 
   def create
-    @post = Post.find(params[:post_id])
-    @attachment = @post.attachments.create(attachment_params)
+    @attachment = Attachment.create(attachment_params)
   end
     
   def update
@@ -21,7 +20,7 @@ class AttachmentsController < ApplicationController
   private
 
   def attachment_params
-    params.require(:attachment).permit(:note, :file)
+    params.require(:attachment).permit(:note, :file, :attachable_type)
   end
 
 end

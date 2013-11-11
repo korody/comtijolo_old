@@ -1,16 +1,21 @@
-var $form = $('.button-collapse.colapsed'), 
-    $video = $form.prev('.btn.active'); 
+var $video_form = $('.button-collapse.colapsed'), 
+    $video = $video_form.prev('.btn.active'); 
 
 <% if @video.valid? %>
-  $form.toggle(800);
-  $form.hide(800).html("<%= j render 'videos/form', video: @video %>");
+  $video_form.toggle(800);
+  $video_form.hide(800).html("<%= j render 'videos/form', filmable: @post %>");
   $video.button('complete');
   $video.toggleClass('active')
-  <% if @post.videos.count == 1 %>
-    $(".video-gallery").after("<%= j render 'video_gallery' %>");
-  <% else %>
-    $(".videos-list .col-lg-12:last-child").after("<%= j render 'gallery_video', video: @video %>");
-  <% end %>
+  $(".videos-list .col-lg-12:last-child").before("<%= j render 'gallery_video', video: @video %>");
+  var form  = $('*[data-filmable="<%= @video.filmable_type %>"]'),
+      field = form.find('.filmable_video_ids');
+
+  var array = field.val().split(',').filter(function (v) {
+    return !isNaN(parseInt(v));
+  });
+  array.push('<%= @video.id %>');
+
+  field.val(array.join(','));
 <% else %>
-  $form.html("<%= j render 'videos/form', video: @video %>");
+  $form.html("<%= j render 'videos/form', filmable: @post %>");
 <% end %>

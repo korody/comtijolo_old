@@ -3,14 +3,18 @@
 //  INDEX
 
 .wall
-  
-  a.category-link, a.tag-link, a.actions-link
-    color: $text-light
+
+  .posts-index
+    // border-left: 1px solid white
+    padding: 20px 0
 
   .post
-    border-left: 1px solid $border
-    padding: 0 20px
-    margin: 0 0 60px
+    background-color: white
+    padding: 4px 20px
+    margin: 10px 0 60px
+
+    .post-photos
+      margin-top: 20px
 
     .post-photos, .post-videos
       margin-left: -20px
@@ -19,16 +23,71 @@
       padding: 10px 0 0 20px  
 
     .post-footer
-      border-bottom: 1px solid $border
-      padding: 20px 0 10px 
+      border-bottom: 1px solid white
+      padding: 20px 0 30px 
 
       i
         margin: 0 8px
 
-p.content, textarea#post_content
+a.category-link, a.tag-link, a.actions-link, .post-date
+  color: $text-light
+
+p.content, textarea#post_content, p.sidebar_text, p.header-description
   font-size: 17px
   font-weight: 500
   line-height: 1.6
+  text-align: justify
+
+
+//  SIDEBAR
+
+p.sidebar_intro
+  visibility: hidden
+  position: absolute
+
+.sidebar
+  margin-top: 28px
+
+  article
+    border-top: 1px solid white
+    margin-bottom: 20px
+
+    // &:first-child
+    //   border: 0
+
+    h4
+      color: $text-light
+
+    p
+      margin: 5px 0
+
+    h6
+      margin: 0
+
+    .col-lg-8
+      margin: 0
+      padding: 0
+    
+    .sidebar-posts
+
+      li
+        margin-bottom: 20px
+
+      h4
+        color: $comtijolo
+
+  .pill-wall
+
+    li
+      border-radius: 4px
+      border: 1px solid white
+      margin: 0 1px 1px 0
+
+      a
+        border-radius: 4px
+
+        &:hover
+          background-color: white
 
 
 //  EDIT post
@@ -46,7 +105,7 @@ p.content, textarea#post_content
   width: 100%
 
   .file-name
-    color: $base
+    color: $comtijolo
     font-size: 18px
     padding: 8px
     position: absolute
@@ -58,13 +117,13 @@ p.content, textarea#post_content
     padding: 0 !important
 
     .bar
-      background-color: $comtijolo
+      background-color: white
       height: 45px
 
 
 .file-input-wrapper
   color: $text-medium
-  border: 2px dashed $border
+  border: 2px dashed white
   border-radius: 6px
   font-size: 18px
   height: 45px

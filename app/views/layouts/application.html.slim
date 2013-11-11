@@ -7,9 +7,18 @@ html
     /[if lt IE 9]
       script src='http://html5shim.googlecode.com/svn/trunk/html5.js'
     meta name='viewport' content='width=device-width, initial-scale=1.0'
+    meta https-equiv="Content-type" content="text/html; charset=utf-8"
+    meta https-equiv="content-language" content="pt-BR"
   body
     .container
-      = render 'header'
-      = render 'flash'
-      = yield
+      .row
+        = render 'flash'
+        .header
+          = render 'header' unless @disable_header
+        .wall
+          .col.col-lg-7
+            = yield
+          .col.col-lg-4
+            .sidebar
+              = render 'layouts/sidebar' unless @disable_sidebar
   = javascript_include_tag 'application', 'data-turbolinks-track' => true

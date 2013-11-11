@@ -1,14 +1,8 @@
-= render 'errors', object: @video
-= form_for [@post, @video], url: post_videos_path(@post), method: :post, remote: true do |video|
-  / = video.hidden_field :filmable_type, value: filmable.class.name
-  = video.label :title, class: 'sr-only'
-  = video.text_field :title, class: 'form-control input-lg', placeholder: "título"
+= form_for Video.new, remote: true do |video|
+  = video.hidden_field :filmable_type, value: filmable.class.name
   = video.label :link, class: 'sr-only'
   = video.text_field :link, class: 'form-control input-lg', placeholder: "video"
   = video.label :note, class: 'sr-only'
   = video.text_area :note, class: 'form-control input-lg', rows: 2, placeholder: "descrição do video"
   button type='submit button' class= 'btn btn-lg btn-default btn-block btn-default' id= 'create-video' data-loading-text= "adicionando..." data-complete-text="mensagem enviada : )" autocomplete='off'
     | pronto
-
-/ REVISE - form_for need to pass property id - form_for property or hidden field?
-/ REVISE - when form fields have and error, it re-renders with the errors but erases any message written, because I'm seeting a pre-defined value - any fix to this?
