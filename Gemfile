@@ -23,6 +23,7 @@ gem "fog", "~> 1.3.1"
 gem 'aws-s3'
 gem 'jquery-fileupload-rails'
 gem 'best_in_place', github: 'bernat/best_in_place'
+gem 'meta-tags', require: 'meta_tags'
 
 group :development do
   gem 'faker'

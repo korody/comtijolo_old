@@ -1,6 +1,11 @@
 # encoding:   utf-8
 class ContactController < ApplicationController
   
+  def index
+    @message = Message.new
+    @tags = Tag.all
+  end
+
   def new
     @message = Message.new
   end
@@ -9,7 +14,7 @@ class ContactController < ApplicationController
     @message = Message.new(message_params)
     if @message.valid?
       UserMailer.contact(@message).deliver
-      flash[:sent] = "Obrigado #{@message.name}! Kalina ou eu responderemos sua mensagem em breve : )".html_safe
+      # flash[:sent] = "Obrigado #{@message.name}! Kalina e eu responderemos sua mensagem em breve : )".html_safe
     else
       respond_to do |format|
         format.html {  }

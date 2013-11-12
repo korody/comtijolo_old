@@ -20,7 +20,16 @@ class Post < ActiveRecord::Base
 
   default_scope order('created_at DESC')    
 
-  # accepts_nested_attributes_for :attachments, :videos  
+  scope :next, lambda {|id| where("id > ?",id).order("id ASC") } # this is the default ordering for AR
+  scope :previous, lambda {|id| where("id < ?",id).order("id DESC") }
+
+  def next
+    Post.next(self.id).first
+  end
+
+  def previous
+    Post.previous(self.id).first
+  end  
 
   def to_param
     slug

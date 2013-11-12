@@ -15,11 +15,13 @@ article
     .nav.nav-pills
       - @posts_by_month.each do |month, posts|
         li = link_to month.strftime('%B%y').downcase.html_safe, nil
-article
+/ article
   h4 rss feed
-article
-  h4 diga olá
-  = render 'contact/form'
+- if params[:controller] == "posts"  
+  article
+    h4 diga olá
+    .contact-form
+      = render 'contact/form', message: @message
 article
   h4 curte lá
   .fb-like-box data-href='http://www.facebook.com/gingawhatfeed' data-height='400' data-colorscheme='light' data-show-faces='true' data-header='false' data-stream='false' data-show-border='false'

@@ -38,6 +38,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @message = Message.new
     @posts_by_month = Post.all.group_by { |post| post.created_at.beginning_of_month }
     @tags = Tag.all
   end

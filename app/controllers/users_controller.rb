@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
   before_action :disable_extras, only: [:new, :create, :update, :edit]
 
-
   def index
+    @message = Message.new
     @tags = Tag.all
   end
 
@@ -30,6 +30,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @message = Message.new
     @posts = @user.posts.all
     @tags = @user.tags
   end

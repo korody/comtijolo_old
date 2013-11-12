@@ -1,3 +1,4 @@
+- set_meta_tags og: { title: "#{@user.name} | um lado do comTijolo", image: "#{@user.attachments.map { |a| a.file_url }.join('')}", type: 'profile' }
 .wall
   .posts-index
     = render 'user', user: @user

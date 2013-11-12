@@ -1,0 +1,14 @@
+var $form = $('.contact-form'),
+    $new_message = $('#new_message'),
+    $header = $form.prev('h4');
+<% if @message.valid? %>
+  $form.hide(800);
+  $header.text('olá enviado : )');
+  setTimeout(function() {
+    $form.show(800);
+    $form.html("<%= j render 'contact/form', message: Message.new %>");
+    $header.text('quer dizer algo mais?');
+  }, 2500);
+<% else %>
+  $form.html("<%= j render 'contact/form' %>");
+<% end %>

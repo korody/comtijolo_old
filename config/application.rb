@@ -25,8 +25,8 @@ module Comtijolo
       :address              => "smtp.gmail.com",
       :port                 => 587,
       :domain               => "comtijolo.com",
-      :user_name            => "ola@comtijolo.com",
-      :password             => "comti",
+      :user_name            => "tijolo@comtijolo.com",
+      :password             => "honeypie",
       :authentication       => :plain,
       :enable_starttls_auto => true
     }

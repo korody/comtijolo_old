@@ -10,3 +10,7 @@ $('#video-collapse').click ->
 $('#create-video').click ->
   $this = $(this);
   $this.button('loading')
+
+$('#send-message').click ->
+  $this = $(this);
+  $this.button('loading')

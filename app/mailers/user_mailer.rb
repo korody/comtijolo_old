@@ -1,6 +1,6 @@
 # encoding:   utf-8
 class UserMailer < ActionMailer::Base
-  default from: "ola@comtijolo.com"
+  default from: "tijolo@comtijolo.com"
 
   def password_reset(user)
     @user = user
@@ -9,7 +9,7 @@ class UserMailer < ActionMailer::Base
 
   def contact(message)
     @message = message
-    mail to: ola@comtijolo.com, subject: "Iei! Leitor comtijolo quer conversar. : )"
+    mail to: "tijolo@comtijolo.com", subject: "Iei! Leitor comtijolo quer conversar. : )"
   end
 
 end

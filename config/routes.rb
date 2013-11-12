@@ -7,6 +7,9 @@ Comtijolo::Application.routes.draw do
   post '/signup', to: 'users#create'
   get '/signup', to: 'users#new'
 
+  get '/casal', to: 'users#index'
+  get '/contato', to: 'contact#index'
+
   resources :users
 
   resources :password_resets, only: [:new, :create, :edit, :update]
@@ -29,6 +32,7 @@ Comtijolo::Application.routes.draw do
 
   # get 'tags/:tag', to: 'posts#index', as: :tag
   get 'tags/:tag', to: 'categories#show'
+  
   
   match '/contact', to: 'contact#new',    via: :get
   match '/contact', to: 'contact#create', via: :post

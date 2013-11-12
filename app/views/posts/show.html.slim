@@ -1,4 +1,7 @@
+- set_meta_tags og: { title: "#{@post.name} | blog comTijolo", image: "#{@post.attachments.map { |a| a.file_url }.join('')}" }
 .posts-index
   = render @post
 .post-comments
   = render 'layouts/disqus'
+.element-controls
+  = render 'layouts/object_controls', object: @post
