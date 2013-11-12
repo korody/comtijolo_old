@@ -1,3 +1,4 @@
 .posts-index
-  - @posts.each do |post|
+  - @posts.first(3).each do |post|
     = render post
+  = render 'posts/posts_summary'

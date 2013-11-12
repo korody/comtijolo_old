@@ -1,4 +1,6 @@
 class PasswordResetsController < ApplicationController
+  before_action :disable_extras
+
   def new
   end
 
@@ -30,6 +32,11 @@ class PasswordResetsController < ApplicationController
   end
 
   private
+
+  def disable_extras
+    @disable_header = true
+    @disable_sidebar = true
+  end
 
   def user_params
     params.require(:user).permit(:password)

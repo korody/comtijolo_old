@@ -1,10 +1,10 @@
 .post
-  h2 = "#{link_to user.name, user} <p class='post-date pull-right'>24</p>".html_safe
+  h2 = link_to user.name, user
   .post-photos
     = render 'attachments/first_image', object: user
   p.content = raw(user.bio).gsub(/\n/, '<br/>').html_safe
   .post-photos
-    - user.attachments.reverse.each_with_index do |attachment, i|
+    - user.attachments.each_with_index do |attachment, i|
       = content_tag 'div', class: "#{i == 0 ? 'hidden' : ''}" do
         = render attachment
   .post-videos
@@ -13,5 +13,6 @@
   .post-footer
     .pull-right
       - if signed_in?
-        = link_to icon_tag('pencil'), edit_user_path(user), class: 'actions-link'
+        = link_to icon_tag('gear'), edit_user_path(user), class: 'actions-link'
         = link_to icon_tag('trash'), user, class: 'actions-link', method: :delete
+.fb-like data-href='http://www.comtijolo.com/users/#{user.name.parameterize}' data-layout='standard' data-action='like' data-show-faces='true' data-share='false'

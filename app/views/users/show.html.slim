@@ -1,2 +1,6 @@
-= render 'user', user: @user
-= render 'posts/posts_summary'
+.wall
+  .posts-index
+    = render 'user', user: @user
+    - @posts.first(3).each do |post|
+      = render post
+    = render 'posts/posts_summary'

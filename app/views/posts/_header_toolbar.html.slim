@@ -1,6 +1,8 @@
 #category-carousel.carousel.slide
   .carousel-inner
     .item.active
+      = image_tag 'slide_welcome.png', class: 'img-responsive'
+    .item
       = link_to (image_tag 'slide_home.png', class: 'img-responsive'), category_path('o-la-em-casa')
     .item
       = link_to (image_tag 'slide_relationship.png', class: 'img-responsive'), category_path('um-quarto-sobre-dois')

@@ -10,6 +10,7 @@ html
     meta https-equiv="Content-type" content="text/html; charset=utf-8"
     meta https-equiv="content-language" content="pt-BR"
   body
+    = render 'fbsdk'
     .container
       .row
         = render 'flash'
@@ -21,4 +22,5 @@ html
           .col.col-lg-4
             .sidebar
               = render 'layouts/sidebar' unless @disable_sidebar
+    = render 'layouts/disqus_count'
   = javascript_include_tag 'application', 'data-turbolinks-track' => true

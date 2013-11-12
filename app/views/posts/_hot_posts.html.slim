@@ -1,4 +1,10 @@
-h4 comtijolo recomenda
-.sidebar-posts
-  - Post.all.last(1).each do |post|
-    = render 'attachments/first_image', object: post
+- Post.all.last(1).each do |post|
+  - unless @post == post
+    article
+      h4 comtijolo recomenda
+      .sidebar-post
+        ul
+          - for attachment in post.attachments.first(1)
+            li 
+              = link_to image_tag(attachment.file_url(:regular), class: 'img-responsive').to_s, post
+              h4.gradient-bottom-to-top = post.name

@@ -11,7 +11,7 @@
   .post
     background-color: white
     padding: 4px 20px
-    margin: 10px 0 60px
+    margin: 10px 0 0
 
     .post-photos
       margin-top: 20px
@@ -24,12 +24,19 @@
 
     .post-footer
       border-bottom: 1px solid white
-      padding: 20px 0 30px 
+      padding: 20px 0 10px 
+
+      a, p
+        margin: 0
 
       i
-        margin: 0 8px
+        color: $comtijolo
+        margin: 0 8px 0 20px
 
-a.category-link, a.tag-link, a.actions-link, .post-date
+      i:first-child
+        margin-left: 0
+
+a.category-link, a.tag-link, a.actions-link, .post-date, .post-owner, .comment-count
   color: $text-light
 
 p.content, textarea#post_content, p.sidebar_text, p.header-description
@@ -41,40 +48,36 @@ p.content, textarea#post_content, p.sidebar_text, p.header-description
 
 //  SIDEBAR
 
+article
+  border-top: 1px solid white
+  margin-bottom: 20px
+
+  h4
+    color: $text-light
+  
+  .sidebar-post
+
+    ul
+      padding: 0
+
+      li
+        position: relative
+
+    h4
+      bottom: 0
+      color: white
+      position: absolute
+      left: 0
+      margin: 0
+      padding: 20px
+      width: 100%
+
 p.sidebar_intro
   visibility: hidden
   position: absolute
 
 .sidebar
   margin-top: 28px
-
-  article
-    border-top: 1px solid white
-    margin-bottom: 20px
-
-    // &:first-child
-    //   border: 0
-
-    h4
-      color: $text-light
-
-    p
-      margin: 5px 0
-
-    h6
-      margin: 0
-
-    .col-lg-8
-      margin: 0
-      padding: 0
-    
-    .sidebar-posts
-
-      li
-        margin-bottom: 20px
-
-      h4
-        color: $comtijolo
 
   .pill-wall
 

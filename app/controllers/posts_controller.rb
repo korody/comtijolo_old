@@ -3,18 +3,22 @@ class PostsController < ApplicationController
 
   before_action :require_login, except: [:show, :index] 
   before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :disable_extras, only: [:new, :create, :update, :edit]
 
   layout 'posts_sidebar', only: :index
 
+  def index
+    @message = Message.new
+    @posts = Post.filter(params).order('posts.created_at DESC').paginate(page: params[:page], per_page: 20)
+    @posts_by_month = @posts.group_by { |post| post.created_at.beginning_of_month }
+    @tags = Tag.all
+  end
+
   def new
-    @disable_header = true
-    @disable_sidebar = true
     @post = current_user.posts.build
   end
 
   def create
-    @disable_header = true
-    @disable_sidebar = true
     @user = current_user
     @post = @user.posts.build(post_params)
     attachments = Attachment.all
@@ -30,15 +34,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def index
-    @posts = Post.filter(params).order('posts.created_at DESC').paginate(page: params[:page], per_page: 20)
-    @posts_by_month = @posts.group_by { |post| post.created_at.beginning_of_month }
-    @tags = Tag.all
-  end
-
   def edit
-    @disable_header = true
-    @disable_sidebar = true
   end
 
   def show

@@ -1,6 +1,6 @@
 .post
   h2 = "#{link_to post.name, post} <p class='post-date pull-right'>#{post.created_at.strftime('%m')}</p>".html_safe
-  h4 = raw post.categories.pluck(:name).map { |c| link_to c, category_path(c.parameterize), class: 'category-link' }.join(', ')
+  h4 = raw post.categories.pluck(:name).map { |c| link_to c, category_path(c.parameterize), class: 'category-link' }.join(', ') 
   .post-photos
     = render 'attachments/first_image', object: post
   p.content = raw(post.content).gsub(/\n/, '<br/>').html_safe
@@ -12,9 +12,9 @@
     - post.videos.each do |video|
       = render video
   .post-footer
-    = raw post.tags.pluck(:name).map { |t| link_to t, tag_path(t.parameterize), class: 'tag-link' }.join(', ')
+    = "#{icon_tag('tag')}#{raw post.tags.pluck(:name).map { |t| link_to t, tag_path(t.parameterize), class: 'tag-link' }.join(', ')} #{icon_tag('comments')}#{link_to post.name, polymorphic_path([post], anchor: 'disqus_thread'), class: 'comment-count'} #{icon_tag('pencil')}#{link_to post.user.name, post.user, class: 'post-owner' if post.user}".html_safe
     .pull-right
-      = link_to post.user.name, post.user if post.user
       - if signed_in?
-        = link_to icon_tag('pencil'), edit_post_path(post), class: 'actions-link'
+        = link_to icon_tag('gear'), edit_post_path(post), class: 'actions-link'
         = link_to icon_tag('trash'), post, class: 'actions-link', method: :delete
+.fb-like data-href='http://www.comtijolo.com/#{post.name.parameterize}' data-layout='standard' data-action='like' data-show-faces='true' data-share='false'

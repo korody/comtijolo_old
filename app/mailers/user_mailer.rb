@@ -7,4 +7,9 @@ class UserMailer < ActionMailer::Base
     mail to: user.email, subject: "Password Reset"
   end
 
+  def contact(message)
+    @message = message
+    mail to: ola@comtijolo.com, subject: "Iei! Leitor comtijolo quer conversar. : )"
+  end
+
 end

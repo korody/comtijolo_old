@@ -2,20 +2,18 @@
 class UsersController < ApplicationController
   before_action :require_login, only: [:edit, :delete]
   before_action :find_user, only: [:show, :edit, :update, :destroy]
+  before_action :disable_extras, only: [:new, :create, :update, :edit]
+
 
   def index
     @tags = Tag.all
   end
 
   def new
-    @disable_header = true
-    @disable_sidebar = true
     @user = User.new
   end
 
   def create
-    @disable_header = true
-    @disable_sidebar = true
     @user = User.new(user_params)
     attachments = Attachment.all
     user_attachments = attachments.where(id: @user.attachment_ids.split(','))
@@ -32,18 +30,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @tags = Tag.all
     @posts = @user.posts.all
+    @tags = @user.tags
   end
 
   def edit
-    @disable_header = true
-    @disable_sidebar = true
   end
 
   def update
-    @disable_header = true
-    @disable_sidebar = true
     @user.attributes = user_params
     attachments = Attachment.all
     user_attachments = attachments.where(id: @user.attachment_ids.split(','))

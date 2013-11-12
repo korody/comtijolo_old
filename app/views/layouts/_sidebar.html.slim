@@ -1,6 +1,5 @@
 = yield :sidebar
-article
-  = render 'posts/hot_posts'
+= render 'posts/hot_posts'
 article
   h4 tags em tijolos
   .pill-wall
@@ -8,7 +7,7 @@ article
       - @tags.each do |t|
         - if params[:controller] == "categories"
           li = link_to t.name, category_path(tag: t.name.parameterize)
-        - elsif params[:controller] == "posts"
+        - else params[:controller] == "posts"
           li = link_to t.name, tag_path(t)
 / article
   h4 tijolo por tijolo
@@ -18,3 +17,9 @@ article
         li = link_to month.strftime('%B%y').downcase.html_safe, nil
 article
   h4 rss feed
+article
+  h4 diga olá
+  = render 'contact/form'
+article
+  h4 curte lá
+  .fb-like-box data-href='http://www.facebook.com/gingawhatfeed' data-height='400' data-colorscheme='light' data-show-faces='true' data-header='false' data-stream='false' data-show-border='false'

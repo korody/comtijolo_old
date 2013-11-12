@@ -18,6 +18,8 @@ class Post < ActiveRecord::Base
 
   before_validation :generate_slug
 
+  default_scope order('created_at DESC')    
+
   # accepts_nested_attributes_for :attachments, :videos  
 
   def to_param
