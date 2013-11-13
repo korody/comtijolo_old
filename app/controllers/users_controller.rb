@@ -1,4 +1,4 @@
- # encoding: UTF-8
+# encoding: UTF-8
 class UsersController < ApplicationController
   before_action :require_login, only: [:edit, :delete]
   before_action :find_user, only: [:show, :edit, :update, :destroy]

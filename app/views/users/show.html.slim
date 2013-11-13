@@ -2,6 +2,8 @@
 .wall
   .posts-index
     = render 'user', user: @user
+    article
+      h4 o que ando escrevendo
     - @posts.first(3).each do |post|
       = render post
     = render 'posts/posts_summary'
