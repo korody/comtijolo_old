@@ -19,11 +19,15 @@ gem 'bootstrap-will_paginate', :git => 'git://github.com/yrgoldteeth/bootstrap-w
 
 gem "rmagick", '2.13.2'
 gem 'carrierwave', '>= 0.5.3'
-gem "fog", "~> 1.3.1"
 gem 'aws-s3'
 gem 'jquery-fileupload-rails'
 gem 'best_in_place', github: 'bernat/best_in_place'
 gem 'meta-tags', require: 'meta_tags'
+
+group :production do
+  gem 'rails_12factor'
+  gem "fog", "~> 1.3.1"
+end
 
 group :development do
   gem 'faker'
