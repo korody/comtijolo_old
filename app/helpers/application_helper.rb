@@ -8,11 +8,6 @@ module ApplicationHelper
     "<i class='icon-#{icon} #{css_class}'></i>".html_safe
   end
 
-  def disable_extras
-    @disable_header = true
-    @disable_sidebar = true
-  end
-
   # def nested_page_path(post)
   #   "/" + (post.ancestors + [post]).map(&:to_param).join("/")
   # end
