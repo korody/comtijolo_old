@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user.videos << user_videos
     if @user.save
       sign_in @user
-      redirect_to root_path, success: "Usuário criado com sucesso! : )"
+      redirect_to root_path
     else
       render :new
     end
