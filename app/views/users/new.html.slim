@@ -1,1 +1,3 @@
-= render 'form'
+.edit-user.clearfix
+  h3 = "new user #{link_to 'home', root_path, class: 'btn btn-default btn-xs pull-right'}".html_safe
+  = render 'form'
