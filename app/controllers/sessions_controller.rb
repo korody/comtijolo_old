@@ -1,13 +1,13 @@
 # encoding: UTF-8
 class SessionsController < ApplicationController
+  
+  before_action :disable_extras
+
+
   def new
-    @disable_header = true
-    @disable_sidebar = true
   end
 
   def create
-    @disable_header = true
-    @disable_sidebar = true
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       sign_in user
@@ -22,4 +22,12 @@ class SessionsController < ApplicationController
     sign_out
     redirect_to root_path
   end
+
+  private
+
+  def disable_extras
+    @disable_header = true
+    @disable_sidebar = true
+  end
+
 end

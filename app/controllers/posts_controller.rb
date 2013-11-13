@@ -71,6 +71,11 @@ class PostsController < ApplicationController
     @post = Post.find_by_slug!(params[:id].split("/").last)
   end
 
+  def disable_extras
+    @disable_header = true
+    @disable_sidebar = true
+  end
+
   def post_params
     params.require(:post).permit(:name, :content, :user, :category_tokens, :tag_tokens, :attachment_ids, :video_ids, attachments_attributes: [:file, :note, :attachable], videos_attributes: [:title, :note, :link, :filmable])
   end
