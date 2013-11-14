@@ -1,4 +1,3 @@
 .edit-post.clearfix
-  = debug params
   h3 = "new post #{link_to 'cancel', @post, class: 'btn btn-default btn-xs pull-right'}".html_safe
   = render 'form', post: @post
