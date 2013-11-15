@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def icon_tag(icon, css_class = nil)
-    "<i class='icon-#{icon} #{css_class}'></i>".html_safe
+    "<span class='glyphicon glyphicon-#{icon} #{css_class}'></i>".html_safe
   end
 
   # def nested_page_path(post)
