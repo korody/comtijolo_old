@@ -3,4 +3,3 @@
   - @posts.first(3).each do |post|
     = render post
   = render 'posts/posts_summary'
-  = link_to "new post", new_post_path, class: 'btn btn-lg btn-block btn-default' if signed_in?

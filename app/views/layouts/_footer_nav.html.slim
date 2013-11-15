@@ -1,0 +1,15 @@
+ul.nav#footer-nav
+  - if current_user
+    li.dropdown
+      a.dropdown-toggle href="#" data-toggle="dropdown"
+        span
+          = "Olá #{current_user.name}"
+        b.caret
+      ul.dropdown-menu
+        li = link_to "new post", new_post_path
+        li = link_to "me", user_path(current_user)
+        li = link_to "edit me", edit_user_path(current_user)
+        li = link_to "leave", signout_path
+  - else
+    li = link_to ".", login_path
+    / li = link_to "sign up", signup_path, remote: true

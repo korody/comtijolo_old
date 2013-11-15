@@ -11,17 +11,20 @@ html
     meta https-equiv="content-language" content="pt-BR"
     = display_meta_tags site: 'comtijolo'
   body
-    = render 'analytics'
-    .container
-      .row
-        = render 'flash'
-        .header
-          = render 'header' unless @disable_header
-        .wall
-          .col.col-lg-7
-            = yield
-          .col.col-lg-4
-            .sidebar
-              = render 'layouts/sidebar' unless @disable_sidebar
-    = render 'layouts/disqus_count'
+    #wrap
+      = render 'analytics'
+      .container
+        .row
+          = render 'flash'
+          .header
+            = render 'header' unless @disable_header
+          .wall
+            .col.col-lg-7
+              = yield
+            .col.col-lg-4.col-lg-offset-1
+              .sidebar
+                = render 'layouts/sidebar' unless @disable_sidebar
+      = render 'layouts/disqus_count'
+      #push
+    = render 'layouts/footer'
   = javascript_include_tag 'application', 'data-turbolinks-track' => true

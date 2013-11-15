@@ -3,6 +3,14 @@
 body
   // background-color: #F7F5DC
   background-color: $base
+  height: 100%
+
+#wrap
+  height: auto !important
+  height: 100%
+  margin: 0 auto -160px
+  min-height: 100%
+  padding-bottom: 80px
 
 .header
 
@@ -102,3 +110,35 @@ body
   margin-bottom: 40px
   padding: 20px 20px 10px
   width: 100%
+
+#push, #footer
+  height: 160px
+  position: relative
+
+#footer
+  color: $text-light
+  width: 1170px
+  
+  #aerogami
+    bottom: 109px
+    left: 76px
+    position: absolute
+
+    a
+      color: #8A97C4
+
+  #kaju
+    bottom: 109px
+    position: absolute
+    right: 85px
+    
+    a
+      color: #DB947A
+
+  #credentials
+    bottom: 80px
+    position: absolute
+    left: 560px
+
+    a:hover
+      color: none

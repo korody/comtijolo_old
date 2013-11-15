@@ -17,4 +17,4 @@
       - if signed_in?
         = link_to icon_tag('gear'), edit_post_path(post), class: 'actions-link'
         = link_to icon_tag('trash'), post, class: 'actions-link', method: :delete
-.fb-like#fb data-href='http://www.comtijolo.com/#{post.name.parameterize}' data-layout='standard' data-action='like' data-show-faces='true' data-share='false'
+.fb-like data-href='http://www.comtijolo.com/#{post.name.parameterize}' data-layout='standard' data-action='like' data-show-faces='true' data-share='false'

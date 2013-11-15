@@ -1,12 +1,12 @@
 .col.col-lg-7
   .header-toolbar
     = render 'header_toolbar'
-.col.col-lg-4
+.col.col-lg-4.col-lg-offset-1
   .page-logo
     = link_to (image_tag 'logo.png', class: 'img-responsive'), root_path
 .col.col-lg-7
     = render 'subheader'
-.col.col-lg-4
+.col.col-lg-4.col-lg-offset-1
   .search-form
     = render 'search'
 / .row
