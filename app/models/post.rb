@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
   has_many :videos, as: :filmable, dependent: :destroy
 
   validates :slug, uniqueness: true, presence: true,
-                   exclusion: {in: %w[signup signin]}
+                   exclusion: {in: %w[signup signin signout]}
 
   before_validation :generate_slug
 

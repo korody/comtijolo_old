@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class UsersController < ApplicationController
   before_action :require_login, only: [:edit, :delete]
-  before_action :find_user, only: [:show, :edit, :update, :destroy]
+  before_action :find_user, only: [:show, :edit, :update]
   before_action :disable_extras, only: [:new, :create, :update, :edit]
 
   def index
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
     @disable_header = true
     @disable_sidebar = true
   end
-  
+
   def find_user
     @user = User.find_by_slug!(params[:id].split("/").last)
   end

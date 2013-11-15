@@ -1,6 +1,6 @@
 Comtijolo::Application.routes.draw do
 
-  delete '/signout', to: 'sessions#destroy'
+  get '/signout', to: 'sessions#destroy'
   post '/signin', to: 'sessions#create'
   get '/signin', to: 'sessions#new'
 
@@ -11,6 +11,7 @@ Comtijolo::Application.routes.draw do
   get '/contato', to: 'contact#index'
 
   resources :users
+  resources :sessions    
 
   resources :password_resets, only: [:new, :create, :edit, :update]
   
