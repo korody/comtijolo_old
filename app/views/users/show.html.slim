@@ -1,4 +1,4 @@
-- set_meta_tags og: { title: "#{@user.name} | um lado do comTijolo", image: "#{@user.attachments.map { |a| a.file_url }.join('')}", type: 'profile' }
+- set_meta_tags site: "comTijolo", title: @user.name, description: "conheça um pouco mais sobre #{@user.name}", keywords: @user.name, og: { title: "#{@user.name} | um lado do comTijolo", description: "conheça um pouco mais sobre #{@user.name}", image: "#{@user.attachments.map { |a| a.file_url }.join('')}", type: 'profile' }
 .wall
   .posts-index
     = render 'user', user: @user

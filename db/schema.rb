@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20131112013225) do
 
   create_table "posts", force: true do |t|
     t.string   "name"
+    t.text     "description"
     t.text     "content"
     t.string   "slug"
     t.integer  "user_id"
@@ -92,7 +93,6 @@ ActiveRecord::Schema.define(version: 20131112013225) do
   end
 
   create_table "videos", force: true do |t|
-    t.string   "title"
     t.string   "link"
     t.text     "note"
     t.integer  "filmable_id"
