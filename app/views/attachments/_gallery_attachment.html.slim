@@ -3,5 +3,5 @@
     .thumbnail.pull-left
       = image_tag attachment.file_url(:regular).to_s
       .thumbnail-note
-        = best_in_place [@post, attachment], :note
+        = best_in_place attachment, :note
         = link_to "x", attachment_path(attachment), class: 'pull-right', method: "delete", remote: true

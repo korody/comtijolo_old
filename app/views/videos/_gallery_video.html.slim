@@ -5,5 +5,5 @@
         iframe src=video.link frameborder='0' allowfullscreen
       .thumbnail-note.clearfix
         / p = video.title
-        = best_in_place [@post, video], :note
+        = best_in_place video, :note
         = link_to "x", video_path(video), class: 'pull-right', method: "delete", remote: true
