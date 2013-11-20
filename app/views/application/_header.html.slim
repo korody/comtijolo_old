@@ -1,7 +1,10 @@
-.col.col-lg-7
+.col.col-lg-4.col-lg-offset-1.visible-xs.visible-sm
+  .page-logo
+    = link_to (image_tag 'logo.png', class: 'img-responsive'), root_path
+.col.col-lg-7.visible-lg.visible-sm
   .header-toolbar
     = render 'header_toolbar'
-.col.col-lg-4.col-lg-offset-1
+.col.col-lg-4.col-lg-offset-1.visible-lg
   .page-logo
     = link_to (image_tag 'logo.png', class: 'img-responsive'), root_path
 .col.col-lg-7

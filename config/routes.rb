@@ -17,10 +17,10 @@ Comtijolo::Application.routes.draw do
   
   resources :posts, path: "", except: [:index, :new, :create]
 
-  resources :posts, only: [:index, :new, :create] do
-    resources :attachments, only: [:create, :destroy, :update]
-    resources :videos, only: [:create, :destroy, :update]
-  end
+  resources :posts, only: [:index, :new, :create]# do
+    # resources :attachments, only: [:create, :destroy, :update]
+    # resources :videos, only: [:create, :destroy, :update]
+#  end
 
   resources :attachments, only: [:create, :destroy, :update]
   resources :videos, only: [:create, :destroy, :update]

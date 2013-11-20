@@ -13,7 +13,7 @@
   .post-footer
     .pull-right
       - if signed_in?
-        = link_to icon_tag('gear'), edit_user_path(user), class: 'actions-link'
+        = link_to icon_tag('wrench'), edit_user_path(user), class: 'actions-link'
         = link_to icon_tag('trash'), user, class: 'actions-link', method: :delete
 .fb-like data-href='http://www.comtijolo.com/users/#{user.name.parameterize}' data-layout='standard' data-action='like' data-show-faces='true' data-share='false'
 article
