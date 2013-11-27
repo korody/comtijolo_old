@@ -1,4 +1,4 @@
-- Post.all.first(1).each do |post|
+- Post.all.find_by_id(5) do |post|
   - unless @post == post
     article
       h4 comTijolo recomenda
@@ -7,4 +7,4 @@
           - for attachment in post.attachments.first(1)
             li 
               = link_to image_tag(attachment.file_url(:regular), class: 'img-responsive').to_s, post
-              h4.gradient-bottom-to-top = post.name
+              h4.gradient-bottom-to-top = link_to post.name, post
