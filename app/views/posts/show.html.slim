@@ -1,4 +1,4 @@
-- set_meta_tags site: "comTijolo", title: @post.name, description: @post.description, keywords: @post.tags.pluck(:name).join(' '), og: { title: "#{@post.name} | blog comTijolo", description: @post.description, image: "#{@post.attachments.map { |a| a.file_url(:regular) }.join('')}" }
+- set_meta_tags site: "comTijolo", title: @post.name, description: @post.description, keywords: @post.tags.pluck(:name).join(' '), og: { title: "#{@post.name} | blog comTijolo", description: @post.description, image: "#{@post.attachments.first(1)}" }
 .posts-index
   = render @post
 .post-comments
