@@ -4,7 +4,7 @@ article
   h4 tags em tijolos
   .pill-wall
     .nav.nav-pills
-      - @tags.limit(20).reverse.each do |t|
+      - @tags.limit(20).each do |t|
         - if params[:controller] == "categories"
           li = link_to t.name, category_path(tag: t.name.parameterize)
         - else params[:controller] == "posts"
