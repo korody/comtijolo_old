@@ -11,7 +11,7 @@ class PostsController < ApplicationController
     @message = Message.new
     @posts = Post.filter(params).order('posts.created_at DESC').paginate(page: params[:page], per_page: 20)
     @posts_by_month = @posts.group_by { |post| post.created_at.beginning_of_month }
-    @tags = Tag.all
+    @tags = Tag.all.order('tags.created_at DESC')
   end
 
   def new
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   def show
     @message = Message.new
     @posts_by_month = Post.all.group_by { |post| post.created_at.beginning_of_month }
-    @tags = Tag.all
+    @tags = Tag.all.order('tags.created_at DESC')
   end
 
   def update

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def index
     @message = Message.new
-    @tags = Tag.all
+    @tags = Tag.all.order('tags.created_at DESC')
   end
 
   def new
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def show
     @message = Message.new
     @posts = @user.posts.all
-    @tags = @user.tags
+    @tags = @user.tags.order('tags.created_at DESC')
   end
 
   def edit
