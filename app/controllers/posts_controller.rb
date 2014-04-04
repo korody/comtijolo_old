@@ -4,12 +4,12 @@ class PostsController < ApplicationController
   before_action :require_login, except: [:show, :index] 
   before_action :find_post, only: [:show, :edit, :update, :destroy]
   before_action :disable_extras, only: [:new, :create, :update, :edit]
+  before_action :new_message, only: [:show, :index]
 
-  layout 'posts_sidebar', only: :index
+  layout 'posts_sidebar', only: [:index, :show]
 
   def index
-    @message = Message.new
-    @posts = Post.filter(params).order('posts.created_at DESC').paginate(page: params[:page], per_page: 20)
+    @posts = Post.filter(params).order('posts.created_at DESC')#.paginate(page: params[:page], per_page: 20)
     @posts_by_month = @posts.group_by { |post| post.created_at.beginning_of_month }
     @tags = Tag.all.order('tags.created_at DESC')
   end

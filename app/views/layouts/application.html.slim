@@ -2,6 +2,7 @@ doctype html
 html
   head
     / title = page_title yield(:title)
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
     /[if lt IE 9]
@@ -18,12 +19,11 @@ html
           .header
             = render 'header' unless @disable_header
           .wall
-            .col.col-lg-7
+            .col-lg-7
               = yield
-            .col.col-lg-4.col-lg-offset-1
+            .col-lg-4.col-lg-offset-1
               .sidebar
                 = render 'layouts/sidebar' unless @disable_sidebar
       = render 'layouts/disqus_count'
       #push
     = render 'layouts/footer'
-  = javascript_include_tag 'application', 'data-turbolinks-track' => true

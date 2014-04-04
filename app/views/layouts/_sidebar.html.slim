@@ -1,30 +1,22 @@
-= yield :sidebar
 .couple-intro
-  = render 'users/couple_intro'
+  = yield :sidebar
   = render 'users/users_menu'
 = render 'posts/hot_posts'
 article
-  h4 tags em tijolos
-  .pill-wall
-    .nav.nav-pills
-      - @tags.limit(20).each do |t|
-        - if params[:controller] == "categories"
-          li = link_to t.name, category_path(tag: t.name.parameterize)
-        - else params[:controller] == "posts"
-          li = link_to t.name, tag_path(t)
+  h4 séries de tijolos
+  = render 'tags/tags'
 / article
-  h4 tijolo por tijolo
-  .pill-wall
-    .nav.nav-pills
-      - @posts_by_month.each do |month, posts|
-        li = link_to month.strftime('%B%y').downcase.html_safe, nil
+  / h4 tijolo por tijolo
+  / .pill-wall
+  /   .nav.nav-pills
+  /     - @posts_by_month.each do |month, posts|
+  /       li = link_to month.strftime('%B%y').downcase.html_safe, nil
 / article
-  h4 rss feed
-- if params[:controller] == "posts"  
-  article
-    h4 diga olá
-    .contact-form
-      = render 'contact/form', message: @message
+  / h4 rss feed
+article
+  h4 diga olá
+  .contact-form
+    = render 'contact/form', message: @message
 article
   h4 curte lá
   .fb-like-box data-href='http://www.facebook.com/comtijolo' data-height='400' data-width='300' data-colorscheme='light' data-show-faces='true' data-header='false' data-stream='false' data-show-border='false'

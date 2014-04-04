@@ -1,0 +1,10 @@
+- set_meta_tags site: "comTijolo", title: "blog", description: "vem explorar os tijolos que sustentam nosso estilo de vida ", keywords: "blog posts tijolos casal", og: { title: 'comTijolo', url: 'http://www.comtijolo.com', image: ['https://s3-sa-east-1.amazonaws.com/comtijolo/logo.png'], type: 'article', description: 'relato das reviravoltas das vidas de um casal se virando para construir um lar.' }
+.search-index
+  - if @posts.any?
+    h4.header Encontramos alguns tijolos por aqui:
+    ul.media-list
+      - @posts.each do |post|
+        = content_tag 'li', class: "media" do
+          = render 'posts/post_summary', post: post
+  - else
+    h4.header Nenhum tijolo encontrado.

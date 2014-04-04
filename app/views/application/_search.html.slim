@@ -1,6 +1,6 @@
-= form_tag posts_path do
+= form_tag search_path, method: 'get' do
   .input-group
-    = text_field_tag :query, params[:query], placeholder: 'ainda estamos trabalhando nessa função ; )', class: 'input-xs form-control'
+    = text_field_tag :query, params[:query], placeholder: 'buscar...', class: 'input-xs form-control'
     = content_tag :span, class: 'input-group-btn' do
-      = content_tag :button, type: 'submit', class: 'btn btn-default disabled', 'data-disable-with' => "#{icon_tag 'spinner', 'icon-spin address-ajax-spin'}" do
+      = content_tag :button, type: 'submit', class: 'btn btn-default', 'data-disable-with' => "#{icon_tag 'spinner'}" do
         = icon_tag 'search'

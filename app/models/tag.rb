@@ -2,6 +2,7 @@ class Tag < ActiveRecord::Base
 
   has_many :taggings, dependent: :destroy
   has_many :posts, through: :taggings
+  has_many :users, through: :posts
 
   validates :slug, uniqueness: true, presence: true
 
@@ -18,6 +19,22 @@ class Tag < ActiveRecord::Base
   def self.ids_from_tokens(tokens)
     tokens.gsub!(/<<<(.+?)>>>/) { create!(name: $1).id }
     tokens.split(',')
+  end
+
+private
+
+  include PgSearch
+  pg_search_scope :search, against: :name,
+  using: {tsearch: {prefix: true, dictionary: "portuguese"}},
+  associated_against: {posts: :name, users: :name},
+  ignoring: :accents
+  
+  def self.text_search(query)
+    if query.present?
+      search(query)
+    else
+      all
+    end
   end
 
 end

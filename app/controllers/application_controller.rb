@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def new_message
+    @message = Message.new
+  end
+
   def require_login
     unless signed_in?
       store_location

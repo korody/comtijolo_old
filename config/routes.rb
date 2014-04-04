@@ -10,6 +10,8 @@ Comtijolo::Application.routes.draw do
   get '/casal', to: 'users#index'
   get '/contato', to: 'contact#index'
 
+  get :search, to: 'searches#new'
+
   resources :users
   resources :sessions    
 
@@ -25,12 +27,10 @@ Comtijolo::Application.routes.draw do
   get 'categories/autocomplete', to: 'categories#autocomplete'
   get 'tags/autocomplete', to: 'tags#autocomplete'
 
-  resources :categories
-  resources :tags, only: [:index, :show]
+  resources :categories, only: :show
+  resources :tags, only: :show
 
-  # get 'tags/:tag', to: 'posts#index', as: :tag
   get 'tags/:tag', to: 'categories#show'
-  
   
   match '/contact', to: 'contact#new',    via: :get
   match '/contact', to: 'contact#create', via: :post

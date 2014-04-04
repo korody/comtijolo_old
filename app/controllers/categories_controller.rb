@@ -2,11 +2,9 @@ class CategoriesController < ApplicationController
   respond_to :html, :json
   
   before_action :find_category, only: [:show, :edit, :update, :destroy]
+  before_action :new_message, only: :show
 
   layout 'categories_sidebar', only: :show
-
-  def index
-  end
 
   def show
     category_posts = @category.posts

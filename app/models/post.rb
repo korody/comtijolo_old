@@ -41,9 +41,9 @@ class Post < ActiveRecord::Base
 
   def self.filter(params)
     if params[:tag]
-      Post.tagged_with(params[:tag])
+      tagged_with(params[:tag])
     else
-      Post.all
+      all
     end
   end
 
@@ -57,6 +57,22 @@ class Post < ActiveRecord::Base
 
   def tag_tokens=(tokens)
     self.tag_ids = Tag.ids_from_tokens(tokens)
+  end
+
+private
+
+  include PgSearch
+  pg_search_scope :search, against: [:name, :description],
+  using: {tsearch: {prefix: true, dictionary: "portuguese"}},
+  associated_against: {user: :name, tags: :name, categories: :name},
+  ignoring: :accents
+  
+  def self.text_search(query)
+    if query.present?
+      search(query)
+    else
+      all
+    end
   end
 
 end
