@@ -17,7 +17,9 @@ Comtijolo::Application.routes.draw do
 
   resources :password_resets, only: [:new, :create, :edit, :update]
   
-  resources :posts, path: "", except: [:index, :new, :create]
+  resources :posts, path: "", except: [:index, :new, :create] do
+    patch :unrecommend, :recommend, on: :member
+  end
 
   resources :posts, only: [:index, :new, :create]
 

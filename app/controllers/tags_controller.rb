@@ -3,6 +3,7 @@ class TagsController < ApplicationController
 
   before_action :find_tag, only: [:show, :edit, :update, :destroy]
   before_action :new_message, only: :show
+  before_action :recommend_post, only: :show
 
   layout 'posts_sidebar', only: :show
 

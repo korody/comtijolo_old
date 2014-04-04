@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def recommend_post
+    @recommended = Post.where(recommended: true)
+  end
+
   def new_message
     @message = Message.new
   end

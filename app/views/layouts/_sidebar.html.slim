@@ -13,10 +13,11 @@ article
   /       li = link_to month.strftime('%B%y').downcase.html_safe, nil
 / article
   / h4 rss feed
-article
-  h4 diga olá
-  .contact-form
-    = render 'contact/form', message: @message
+- unless controller_name == "contact"
+  article
+    h4 diga olá
+    .contact-form
+      = render 'contact/form', message: @message
 article
   h4 curte lá
   .fb-like-box data-href='http://www.facebook.com/comtijolo' data-height='400' data-width='300' data-colorscheme='light' data-show-faces='true' data-header='false' data-stream='false' data-show-border='false'

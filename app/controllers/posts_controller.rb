@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy]
   before_action :disable_extras, only: [:new, :create, :update, :edit]
   before_action :new_message, only: [:show, :index]
+  before_action :recommend_post, only: [:show, :index]
 
   layout 'posts_sidebar', only: [:index, :show]
 
@@ -38,7 +39,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @message = Message.new
     @posts_by_month = Post.all.group_by { |post| post.created_at.beginning_of_month }
     @tags = Tag.all.order('tags.created_at DESC')
   end
@@ -63,6 +63,18 @@ class PostsController < ApplicationController
     # @post.destroy
     flash[:notice] = "Post removido."
     redirect_to current_user
+  end
+
+  def unrecommend
+    @post = Post.all.find_by_slug(params[:id])
+    @post.update(recommended: false)
+    redirect_to :back
+  end
+
+  def recommend
+    @post = Post.all.find_by_slug(params[:id])
+    @post.update(recommended: true)
+    redirect_to :back
   end
 
   private

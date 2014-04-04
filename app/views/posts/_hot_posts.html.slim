@@ -1,10 +1,10 @@
-- Post.all.find_by_id(19) do |post|
-  - unless @post == post
-    article
-      h4 comTijolo recomenda
-      .sidebar-post
-        ul
-          - for attachment in post.attachments.first(1)
-            li 
-              = link_to image_tag(attachment.file_url(:regular), class: 'img-responsive').to_s, post
-              h4.gradient-bottom-to-top = link_to post.name, post
+article
+  h4 comTijolo recomenda
+  - @recommended.all.each do |post|
+    - unless @post == post
+        .sidebar-post
+          ul
+            - for attachment in post.attachments.first(1)
+              li 
+                = link_to image_tag(attachment.file_url(:regular), class: 'img-responsive').to_s, post
+                h4.gradient-bottom-to-top = link_to post.name, post
