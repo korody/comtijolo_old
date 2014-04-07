@@ -7,12 +7,11 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def recommend_post
+  def sidebar_variables
     @recommended = Post.where(recommended: true)
-  end
-
-  def new_message
     @message = Message.new
+    @tags = Tag.all.order('tags.created_at DESC')
+    # @posts_by_month = @posts.group_by { |post| post.created_at.beginning_of_month }
   end
 
   def require_login

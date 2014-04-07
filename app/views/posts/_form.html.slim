@@ -27,4 +27,7 @@
   .form-group
     = post.label :tag_tokens, "Tags"
     = post.text_field :tag_tokens, class: 'form-control input-lg', placeholder: "tags", data: {load: @post.tags.map(&:attributes)}
+  .form-group
+    = post.label :complements_tokens, "Further Readings"
+    = post.text_field :complements_tokens, class: 'form-control input-lg', placeholder: "another brick in the wall", data: {load: @post.complements.map(&:attributes)}
   = post.submit "done", class: 'btn btn-block btn-lg btn-success'

@@ -28,6 +28,7 @@ Comtijolo::Application.routes.draw do
 
   get 'categories/autocomplete', to: 'categories#autocomplete'
   get 'tags/autocomplete', to: 'tags#autocomplete'
+  get 'posts/autocomplete', to: 'posts#autocomplete'
 
   resources :categories, only: :show
   resources :tags, only: :show

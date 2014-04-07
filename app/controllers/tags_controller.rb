@@ -2,14 +2,12 @@ class TagsController < ApplicationController
   respond_to :html, :json
 
   before_action :find_tag, only: [:show, :edit, :update, :destroy]
-  before_action :new_message, only: :show
-  before_action :recommend_post, only: :show
+  before_action :sidebar_variables, only: :show
 
   layout 'posts_sidebar', only: :show
 
   def show
     @posts = @tag.posts
-    @tags = Tag.all
   end
 
   def create

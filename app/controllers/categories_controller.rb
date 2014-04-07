@@ -2,15 +2,14 @@ class CategoriesController < ApplicationController
   respond_to :html, :json
   
   before_action :find_category, only: [:show, :edit, :update, :destroy]
-  before_action :new_message, only: :show
-  before_action :recommend_post, only: :show
+  before_action :sidebar_variables, only: :show
 
   layout 'categories_sidebar', only: :show
 
   def show
     category_posts = @category.posts
     @posts = category_posts.filter(params).order('posts.created_at DESC').paginate(page: params[:page], per_page: 20)
-    @tags = @category.tags
+    # @tags = @category.tags
   end
 
   def create

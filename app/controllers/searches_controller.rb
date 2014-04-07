@@ -1,6 +1,5 @@
 class SearchesController < ApplicationController
-  before_action :new_message, only: :new
-  before_action :recommend_post, only: :new
+  before_action :sidebar_variables, only: :new
 
   layout 'searches_sidebar', only: :new
 

@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_reader :category_tokens, :tag_tokens
+  attr_reader :category_tokens, :tag_tokens, :complements_tokens
   attr_accessor :attachment_ids, :video_ids
 
   belongs_to :user
@@ -15,6 +15,9 @@ class Post < ActiveRecord::Base
 
   validates :slug, uniqueness: true, presence: true,
                    exclusion: {in: %w[signup signin signout]}
+
+  has_many :complementaries, dependent: :destroy
+  has_many :complements, through: :complementaries
 
   before_validation :generate_slug
 
@@ -57,6 +60,15 @@ class Post < ActiveRecord::Base
 
   def tag_tokens=(tokens)
     self.tag_ids = Tag.ids_from_tokens(tokens)
+  end
+
+  def complements_tokens=(tokens)
+    self.complement_ids = Post.ids_from_tokens(tokens)
+  end
+
+  def self.ids_from_tokens(tokens)
+    tokens.gsub!(/<<<(.+?)>>>/) { create!(name: $1).id }
+    tokens.split(',')
   end
 
 private

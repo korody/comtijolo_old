@@ -1,6 +1,14 @@
 - set_meta_tags site: "comTijolo", title: @post.name, description: @post.description, keywords: @post.tags.pluck(:name).join(' '), og: { title: "#{@post.name} | blog comTijolo", description: @post.description, image: "#{@post.attachments.map { |a| a.file_url }.join('')}" }
 .posts-index
   = render @post
+.post-complements
+  - if @complements.any?
+    article
+      h4 leitura complementar
+      ul.media-list
+        - @complements.each do |post|
+          = content_tag 'li', class: "media" do
+            = render "post_summary", post: post
 .post-comments
   = render 'layouts/disqus'
 .element-controls

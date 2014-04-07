@@ -12,4 +12,10 @@ $(function() {
     preventDuplicates: true
   });
 
+  $("#post_complements_tokens").tokenInput("/posts/autocomplete", {
+    crossDomain: false,
+    prePopulate: $("#post_complements_tokens").data("load"),
+    preventDuplicates: true
+  });
+
 });
