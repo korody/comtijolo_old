@@ -25,6 +25,11 @@ class Category < ActiveRecord::Base
     end
   end
 
+  def self.tokens(query)
+    categories = where("name ilike ?", "%#{query}%")
+    categories.empty? ? [{id: "<<<#{query}>>>", name: "NENHUMA CATEGORIA \"#{query}\" ENCONTRADA!"}] : categories
+  end
+
   def self.ids_from_tokens(tokens)
     tokens.gsub!(/<<<(.+?)>>>/) { create!(name: $1).id }
     tokens.split(',')

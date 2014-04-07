@@ -18,10 +18,8 @@ class CategoriesController < ApplicationController
 
   def autocomplete
     @categories = Category.order(:name)
-    category_list = @categories.where("name ilike ?", "%#{params[:q]}%").map {|e| {id: e.id, name: e.name} } 
-    category_query = category_list.empty? ? [{id: "<<<#{params[:q]}>>>", name: "novo item: \"#{params[:q]}\""}] : category_list
     respond_with(@category) do |format|
-      format.json { render json: category_query }
+      format.json { render json: @categories.tokens(params[:q]) }
     end
   end
 

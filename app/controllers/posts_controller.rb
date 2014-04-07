@@ -72,13 +72,10 @@ class PostsController < ApplicationController
 
   def autocomplete
     @posts = Post.order(:name)
-    post_list = @posts.where("name ilike ?", "%#{params[:q]}%").map {|p| {id: p.id, name: p.name} } 
-    post_query = post_list.empty? ? [{id: "<<<#{params[:q]}>>>", name: "novo post: \"#{params[:q]}\""}] : post_list
     respond_with(@post) do |format|
-      format.json { render json: post_query }
+      format.json { render json: @posts.tokens(params[:q]) }
     end
   end
-  #  REVISE for skinny controller
 
   private
 

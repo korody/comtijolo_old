@@ -66,6 +66,11 @@ class Post < ActiveRecord::Base
     self.complement_ids = Post.ids_from_tokens(tokens)
   end
 
+  def self.tokens(query)
+    posts = where("name ilike ?", "%#{query}%")
+    posts.empty? ? [{id: "<<<#{query}>>>", name: "NENHUM POST \"#{query}\" FOI ENCONTRADO!"}] : posts
+  end
+
   def self.ids_from_tokens(tokens)
     tokens.gsub!(/<<<(.+?)>>>/) { create!(name: $1).id }
     tokens.split(',')

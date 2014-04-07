@@ -6,6 +6,8 @@ class TagsController < ApplicationController
 
   layout 'posts_sidebar', only: :show
 
+
+
   def show
     @posts = @tag.posts
   end
@@ -16,13 +18,10 @@ class TagsController < ApplicationController
 
   def autocomplete
     @tags = Tag.order(:name)
-    tag_list = @tags.where("name ilike ?", "%#{params[:q]}%").map {|t| {id: t.id, name: t.name} } 
-    tag_query = tag_list.empty? ? [{id: "<<<#{params[:q]}>>>", name: "nova tag: \"#{params[:q]}\""}] : tag_list
     respond_with(@tag) do |format|
-      format.json { render json: tag_query }
+      format.json { render json: @tags.tokens(params[:q]) }
     end
   end
-  #  REVISE for skinny controller
 
   private
 
