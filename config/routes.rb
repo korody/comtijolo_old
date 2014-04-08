@@ -19,6 +19,7 @@ Comtijolo::Application.routes.draw do
   
   resources :posts, path: "", except: [:index, :new, :create] do
     patch :unrecommend, :recommend, on: :member
+    get :archive, on: :collection
   end
 
   resources :posts, only: [:index, :new, :create]
@@ -35,10 +36,10 @@ Comtijolo::Application.routes.draw do
 
   get 'tags/:tag', to: 'categories#show'
   
-  match '/contact', to: 'contact#new',    via: :get
-  match '/contact', to: 'contact#create', via: :post
-
   root to: 'posts#index' 
 
   get '*id', to: 'posts#index'
+
+  match '/contact', to: 'contact#new',    via: :get
+  match '/contact', to: 'contact#create', via: :post
 end

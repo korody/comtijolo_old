@@ -5,15 +5,15 @@
 article
   h4 séries de tijolos
   = render 'tags/tags'
-/ article
-  / h4 tijolo por tijolo
-  / .pill-wall
-  /   .nav.nav-pills
-  /     - @posts_by_month.each do |month, posts|
-  /       li = link_to month.strftime('%B%y').downcase.html_safe, nil
+article
+  h4 tijolo com tijolo
+  .pill-wall
+    .nav.nav-pills
+      - @posts_by_month.each do |month, posts|
+        li = link_to (l month, format: :monthly).upcase, archive_posts_path
 / article
   / h4 rss feed
-- unless controller_name == "contact"
+- unless controller_name == "contact" || "users"
   article
     h4 diga olá
     .contact-form

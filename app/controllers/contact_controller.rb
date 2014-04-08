@@ -1,10 +1,10 @@
 # encoding:   utf-8
 class ContactController < ApplicationController
-  before_action :recommend_post, only: [:index, :new] 
-  before_action :new_message, only: [:index, :new]
+  before_action :sidebar_variables, only: [:index, :new]
+
+  layout 'posts_sidebar', only: :index
 
   def index
-    @tags = Tag.all
   end
 
   def new

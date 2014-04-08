@@ -4,12 +4,15 @@ class PostsController < ApplicationController
   before_action :require_login, except: [:show, :index] 
   before_action :find_post, only: [:show, :edit, :update, :destroy, :recommend, :unrecommend]
   before_action :disable_extras, only: [:new, :create, :update, :edit]
-  before_action :sidebar_variables, only: [:show, :index]
+  before_action :sidebar_variables, only: [:show, :index, :archive]
 
-  layout 'posts_sidebar', only: [:index, :show]
+  layout 'posts_sidebar', only: [:index, :show, :archive]
 
   def index
-    @posts = Post.filter(params).order('posts.created_at DESC')#.paginate(page: params[:page], per_page: 20)
+    @posts = Post.order('posts.created_at DESC')#.paginate(page: params[:page], per_page: 20)
+  end
+
+  def archive
   end
 
   def new

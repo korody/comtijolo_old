@@ -1,0 +1,9 @@
+- set_meta_tags site: "comTijolo", title: "muro", description: "relato das reviravoltas das vidas de um casal se virando para construir um lar.", keywords: "blog casal estilo de vida empreendedorismo mudança arquivo", og: { title: 'comTijolo', url: 'http://www.comtijolo.com/archive', image: ['https://s3-sa-east-1.amazonaws.com/comtijolo/logo.png'], type: 'article', description: 'relato das reviravoltas das vidas de um casal se virando para construir um lar.' }
+.posts-index
+  - @posts_by_month.each do |month, posts|
+    article
+      ul.media-list
+        h4 = (l month, format: :monthly_long).upcase
+        - posts.each do |post|
+          = content_tag 'li', class: "media" do
+            = render 'post_summary', post: post

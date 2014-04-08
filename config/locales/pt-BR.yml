@@ -200,6 +200,8 @@ pt-BR:
       default: ! '%A, %d de %B de %Y, %H:%M h'
       long: ! '%A, %d de %B de %Y, %H:%M h'
       short: ! '%d/%m, %H:%M h'
+      monthly: ! '%b%y'
+      monthly_long: ! '%B de %Y'
     pm: ''
 
   will_paginate:

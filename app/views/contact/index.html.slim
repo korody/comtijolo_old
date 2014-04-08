@@ -1,4 +1,6 @@
 .wall
-  .posts-index
-    br
-    = render 'contact/form', message: @message
+  .contact-container
+    article
+      h4 conta mais
+      .contact-form
+        = render 'contact/form', message: @message

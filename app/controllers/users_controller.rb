@@ -3,9 +3,7 @@ class UsersController < ApplicationController
   before_action :require_login, only: [:edit, :delete]
   before_action :find_user, only: [:show, :edit, :update]
   before_action :disable_extras, only: [:new, :create, :update, :edit]
-  before_action :recommend_post, only: [:index, :show]
-  before_action :new_message, only: [:index, :show]
-
+  before_action :sidebar_variables, only: [:index, :show]
 
   def index
     @tags = Tag.all.order('tags.created_at DESC')
