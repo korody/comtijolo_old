@@ -24,6 +24,7 @@ gem 'carrierwave'
 gem 'jquery-fileupload-rails'
 gem 'best_in_place', github: 'bernat/best_in_place'
 gem 'meta-tags', require: 'meta_tags'
+gem 'heroku'
 
 group :production do
   gem 'rails_12factor'
