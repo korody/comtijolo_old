@@ -1,5 +1,6 @@
 module ApplicationHelper
-  def icon_tag(icon, css_class = nil)
-    "<span class='glyphicon glyphicon-#{icon} #{css_class}'></span>".html_safe
+  def icon_tag(icon, options = {})
+    options[:class] = (%w[fa] | icon.split).join(" fa-")
+    content_tag :i, nil, options
   end
 end

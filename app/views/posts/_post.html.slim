@@ -18,7 +18,7 @@
         - if post.recommended?
           = link_to icon_tag('star'), unrecommend_post_path(post), class: 'actions-link', data: { confirm: "Remover recomendação?" }, method: :patch
         - else
-          = link_to icon_tag('star-empty'), recommend_post_path(post), class: 'actions-link', data: { confirm: "Recomendar post?" }, method: :patch
+          = link_to icon_tag('star-o'), recommend_post_path(post), class: 'actions-link', data: { confirm: "Recomendar post?" }, method: :patch
         = link_to icon_tag('wrench'), edit_post_path(post), class: 'actions-link'
         = link_to icon_tag('trash'), post, class: 'actions-link', data: { confirm: "Certeza que quer apagar o post?" }, method: :delete
 .fb-like data-href='http://www.comtijolo.com/#{post.name.parameterize}' data-layout='standard' data-action='like' data-show-faces='true' data-share='false'
