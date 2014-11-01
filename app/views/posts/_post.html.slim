@@ -16,7 +16,7 @@
     .pull-right
       - if signed_in?
         - if post.recommended?
-          = link_to icon_tag('star'), unrecommend_post_path(post), class: 'actions-link', data: { confirm: "Desrecomendar post?" }, method: :patch
+          = link_to icon_tag('star'), unrecommend_post_path(post), class: 'actions-link', data: { confirm: "Remover recomendação?" }, method: :patch
         - else
           = link_to icon_tag('star-empty'), recommend_post_path(post), class: 'actions-link', data: { confirm: "Recomendar post?" }, method: :patch
         = link_to icon_tag('wrench'), edit_post_path(post), class: 'actions-link'

@@ -114,7 +114,6 @@ GEM
       net-ssh (>= 1.99.1)
     net-ssh (2.8.0)
     netrc (0.7.7)
-    nokogiri (1.5.11)
     nokogiri (1.5.11-x86-mingw32)
     pg (0.17.1-x86-mingw32)
     pg_search (0.7.3)
