@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def sidebar_variables
     @recommended = Post.where(recommended: true)
-    @posts_by_month = Post.all.group_by { |post| post.created_at.beginning_of_month }
+    @posts_by_month = Post.all(select: "name, slug, content, id, created_at").group_by { |post| post.created_at.beginning_of_month }
     @tags = Tag.all.order('tags.created_at DESC')
     @message = Message.new
   end

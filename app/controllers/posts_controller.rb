@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   respond_to :html, :js, :json
 
-  before_action :require_login, except: [:show, :index] 
+  before_action :require_login, except: [:show, :index, :archive] 
   before_action :find_post, only: [:show, :edit, :update, :destroy, :recommend, :unrecommend]
   before_action :disable_extras, only: [:new, :create, :update, :edit]
   before_action :sidebar_variables, only: [:show, :index, :archive]
@@ -13,6 +13,10 @@ class PostsController < ApplicationController
   end
 
   def archive
+  end
+
+  def feed
+    @posts = Post.all
   end
 
   def new

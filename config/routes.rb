@@ -9,6 +9,7 @@ Comtijolo::Application.routes.draw do
 
   get '/casal', to: 'users#index'
   get '/contato', to: 'contact#index'
+  get '/feed', to: 'posts#feed', as: :feed
 
   get :search, to: 'searches#new'
 
