@@ -19,5 +19,12 @@ article
     .contact-form
       = render 'contact/form', message: @message
 article
-  h4 curte lá
+  h4 @comTijolo no instagram
+  - @instagram.each do |media_item|
+    = link_to image_tag(media_item.images.thumbnail.url), 'http://instagram.com/comtijolo', target: '_blank', title: "espiar instagram do comTijolo"  
+  / - @instagram["data"].each do |data|
+    / = image_tag instagram.data.images.standard_resolution.url
+    / = image_tag data["images"]["thumbnail"]["url"], class: 'img-responsive'
+article
+  h4 comTijolo no facebook
   .fb-like-box data-href='http://www.facebook.com/comtijolo' data-height='400' data-width='300' data-colorscheme='light' data-show-faces='true' data-header='false' data-stream='false' data-show-border='false'

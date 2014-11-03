@@ -18,6 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate', :git => 'git://github.com/yrgoldteeth/bootstrap-will_paginate.git'
 gem 'font-awesome-rails'
+gem 'instagram'
 
 gem 'aws-s3'
 gem "rmagick", '2.13.2'
@@ -26,6 +27,8 @@ gem 'jquery-fileupload-rails'
 gem 'best_in_place', github: 'bernat/best_in_place'
 gem 'meta-tags', require: 'meta_tags'
 gem 'heroku'
+gem 'figaro'
+gem 'httparty'
 
 group :production do
   gem 'rails_12factor'

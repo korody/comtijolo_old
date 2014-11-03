@@ -1,6 +1,6 @@
 .post
-  h2 = "#{link_to post.name, post} <p class='post-date pull-right'>#{post.created_at.strftime('%m')}</p>".html_safe
-  h4 = raw post.categories.pluck(:name).map { |c| link_to c, category_path(c.parameterize), class: 'category-link' }.join(', ') 
+  h2 #{link_to_unless @post, post.name, post} <p class='post-date pull-right'>#{post.created_at.strftime('%m')}</p>
+  h4 = raw post.categories.pluck(:name).map { |c| link_to_unless @category, c, category_path(c.parameterize), class: 'category-link' }.join(', ') 
   .post-photos
     = render 'attachments/first_image', object: post
   p.content = raw(post.content).gsub(/\n/, '<br/>').html_safe
@@ -11,8 +11,8 @@
   .post-videos
     - post.videos.each do |video|
       = render video
-  .post-footer
-    = "#{icon_tag('tag') if post.tags.any?}#{raw post.tags.pluck(:name).map { |t| link_to t, tag_path(t.parameterize), class: 'tag-link' }.join(', ')} #{icon_tag('bullhorn') unless @post}#{link_to post.name, polymorphic_path([post], anchor: 'disqus_thread'), class: 'comment-count' unless @post} #{icon_tag('pencil')}#{link_to post.user.name, post.user, class: 'post-owner' if post.user}".html_safe
+  .post-footer.clearfix
+    #{icon_tag('tag') if post.tags.any?}#{raw post.tags.pluck(:name).map { |t| link_to t, tag_path(t.parameterize), class: 'tag-link' }.join(', ')} #{icon_tag('bullhorn') unless @post}#{link_to post.name, polymorphic_path([post], anchor: 'disqus_thread'), class: 'comment-count' unless @post} #{icon_tag('pencil')}#{link_to post.user.name, post.user, class: 'post-owner' if post.user}
     .pull-right
       - if signed_in?
         - if post.recommended?
