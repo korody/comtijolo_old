@@ -1,6 +1,5 @@
 - set_meta_tags site: "comTijolo", title: "blog", description: "relato das reviravoltas das vidas de um casal se virando para construir um lar.", keywords: "blog casal estilo de vida empreendedorismo mudança", og: { title: 'comTijolo', url: 'http://www.comtijolo.com', image: ['https://s3-sa-east-1.amazonaws.com/comtijolo/logo.png'], type: 'article', description: 'relato das reviravoltas das vidas de um casal se virando para construir um lar.' }
-= content_for :head, auto_discovery_link_tag(:atom, feed_url(format: "atom"))
 .posts-index
-  - @posts.first(3).each do |post|
+  - @posts.each do |post|
     = render post
   = render 'posts/posts_summary'

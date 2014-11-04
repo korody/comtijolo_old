@@ -1,6 +1,6 @@
 - for attachment in post.attachments.limit(1)
   = link_to (image_tag attachment.file_url(:medium).to_s, class: 'img-responsive media-object'), post, class: 'pull-left' if attachment
 .media-body.clearfix
-  h4.media-heading = link_to post.name, post
-  p = truncate post.content, length: 300, separator: ' ', escape: false
-  h6 = "em #{raw post.categories.pluck(:name).map { |c| link_to c, category_path(c), class: 'category-link' }.join(', ')} sobre #{raw post.tags.pluck(:name).map { |t| link_to t, tag_path(t), class: 'tag-link' }.join(', ')}".html_safe
+  h4.media-heading => link_to post.name, post
+  p => truncate post.content, length: 285, separator: ' ', escape: false
+  h6 em #{raw post.categories.pluck(:name).map { |c| link_to c, category_path(c), class: 'category-link' }.join(', ')} sobre #{raw post.tags.pluck(:name).map { |t| link_to t, tag_path(t), class: 'tag-link' }.join(', ')}

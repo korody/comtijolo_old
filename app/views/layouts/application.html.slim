@@ -9,8 +9,8 @@ html
     meta https-equiv="Content-type" content="text/html; charset=utf-8"
     meta https-equiv="content-language" content="pt-BR"
     link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto"
+    = auto_discovery_link_tag(:atom, feed_url(format: "atom"))
     = display_meta_tags site: 'comtijolo'
-    = yield :head
   body
     #wrap
       .container

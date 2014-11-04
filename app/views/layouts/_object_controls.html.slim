@@ -1,5 +1,9 @@
 .element-arrows
   - if object.previous.present?         
-    a.pull-left href="#{object.previous.name.parameterize}" title="#{object.previous.name}" = "#{icon_tag 'chevron-left'} #{object.previous.name}".html_safe
+    a.pull-left href=object.previous.name.parameterize title=object.previous.name 
+      span => icon_tag 'chevron-left'
+      span.name => object.previous.name
   - if object.next.present?         
-    a.pull-right href="#{object.next.name.parameterize}" title="#{object.next.name}" = "#{object.next.name} #{icon_tag 'chevron-right'} ".html_safe
+    a.pull-right href=object.next.name.parameterize title=object.next.name
+      span => object.next.name
+      span.name => icon_tag 'chevron-right'

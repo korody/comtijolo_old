@@ -9,7 +9,8 @@ class PostsController < ApplicationController
   layout 'posts_sidebar', only: [:index, :show, :archive]
 
   def index
-    @posts = Post.order('posts.created_at DESC')#.paginate(page: params[:page], per_page: 20)
+    @posts = Post.first(3)#.paginate(page: params[:page], per_page: 20)
+    @recent_posts = Post.all(select: "name, slug, content, id").first(6)
   end
 
   def archive
