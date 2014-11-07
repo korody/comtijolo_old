@@ -5,7 +5,7 @@ atom_feed do |feed|
   @posts.each do |post|
     feed.entry post do |entry|
       entry.title post.name
-      entry.content raw(post.html)
+      entry.content raw post.html
       entry.author do |author|
         author.name post.user.name
       end

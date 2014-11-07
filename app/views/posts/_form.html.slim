@@ -31,3 +31,4 @@
     = post.label :complements_tokens, "Further Readings"
     = post.text_field :complements_tokens, class: 'form-control input-lg', placeholder: "another brick in the wall", data: {load: @post.complements.map(&:attributes)}
   = post.submit "done", class: 'btn btn-block btn-lg btn-success'
+= render 'markdown_guide'

@@ -6,10 +6,8 @@ class SmartyRenderer < Redcarpet::Render::HTML
 
   DEFAULT_OPTIONS = {
     hard_wrap: true,
-    filter_html: true,
     safe_links_only: true,
     link_attributes: {
-      # rel: 'nofollow',
       target: '_blank'
     }
   }

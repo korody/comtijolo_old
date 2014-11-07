@@ -5,7 +5,8 @@
   h4 => raw post.categories.pluck(:name).map { |c| link_to c, category_path(c.parameterize), class: 'category-link' }.join(', ') 
   .post-photos
     = render 'attachments/first_image', object: post
-  p.content => raw post.html
+  .post-content 
+    = raw post.html
   .post-photos
     - post.attachments.each_with_index do |attachment, i|
       = content_tag 'div', class: "#{i == 0 ? 'hidden' : ''}" do
