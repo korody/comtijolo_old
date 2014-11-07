@@ -15,11 +15,13 @@ class Post < ActiveRecord::Base
 
   validates :slug, uniqueness: true, presence: true,
                    exclusion: {in: %w[signup signin signout]}
+  validates :content, presence: true
 
   has_many :complementaries, dependent: :destroy
   has_many :complements, through: :complementaries
 
   before_validation :generate_slug
+  before_save :cook_html
 
   default_scope order('created_at DESC')    
 
@@ -74,6 +76,11 @@ class Post < ActiveRecord::Base
   def self.ids_from_tokens(tokens)
     tokens.gsub!(/<<<(.+?)>>>/) { create!(name: $1).id }
     tokens.split(',')
+  end
+
+  def cook_html
+    html = Markdown.new(content, SmartyRenderer.new).to_html
+    self.html = Sanitize.clean(html, PostSanitizer::FILTER)
   end
 
 private

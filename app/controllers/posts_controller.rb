@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.first(3)#.paginate(page: params[:page], per_page: 20)
-    @recent_posts = Post.all(select: "name, slug, content, id").first(6)
+    @recent_posts = Post.all(select: "name, slug, html, id").first(6)
   end
 
   def archive
@@ -97,7 +97,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:name, :content, :description, :user, :recommended, :category_tokens, :tag_tokens, :complements_tokens, :attachment_ids, :video_ids, attachments_attributes: [:file, :note, :attachable], videos_attributes: [:title, :note, :link, :filmable])
+    params.require(:post).permit(:name, :content, :html, :description, :user, :recommended, :category_tokens, :tag_tokens, :complements_tokens, :attachment_ids, :video_ids, attachments_attributes: [:file, :note, :attachable], videos_attributes: [:title, :note, :link, :filmable])
   end
 
 end

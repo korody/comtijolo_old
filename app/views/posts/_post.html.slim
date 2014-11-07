@@ -2,10 +2,10 @@
   h2  
     span => link_to_unless @post, post.name, post
     .post-date.pull-right => post.created_at.strftime('%m')
-  h4 => raw post.categories.pluck(:name).map { |c| link_to_unless @category, c, category_path(c.parameterize), class: 'category-link' }.join(', ') 
+  h4 => raw post.categories.pluck(:name).map { |c| link_to c, category_path(c.parameterize), class: 'category-link' }.join(', ') 
   .post-photos
     = render 'attachments/first_image', object: post
-  p.content = raw(post.content).gsub(/\n/, '<br/>').html_safe
+  p.content => raw post.html
   .post-photos
     - post.attachments.each_with_index do |attachment, i|
       = content_tag 'div', class: "#{i == 0 ? 'hidden' : ''}" do
@@ -14,12 +14,14 @@
     - post.videos.each do |video|
       = render video
   .post-footer.clearfix
-    span 
-      => icon_tag('tag') if post.tags.any?
-      => raw post.tags.pluck(:name).map { |t| link_to t, tag_path(t.parameterize), class: 'tag-link' }.join(', ')
-    span 
-      => icon_tag('bullhorn') unless @post
-      => link_to post.name, polymorphic_path([post], anchor: 'disqus_thread'), class: 'comment-count' unless @post
+    - if post.tags.any?
+      span 
+        => icon_tag('tag')
+        => raw post.tags.pluck(:name).map { |t| link_to t, tag_path(t.parameterize), class: 'tag-link' }.join(', ')
+    - unless @post
+      span 
+        => icon_tag('bullhorn')
+        => link_to post.name, polymorphic_path([post], anchor: 'disqus_thread'), class: 'comment-count'
     span 
       => icon_tag('pencil')
       => link_to post.user.name, post.user, class: 'post-owner' if post.user

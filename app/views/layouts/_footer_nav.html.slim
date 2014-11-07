@@ -1,15 +1,13 @@
-ul.nav#footer-nav
+#footer-nav
   - if current_user
-    li.dropdown
-      a.dropdown-toggle href="#" data-toggle="dropdown"
-        span
-          = "Olá #{current_user.name}"
-        b.caret
-      ul.dropdown-menu
+    .dropdown.dropup
+      a.dropdown-toggle href="#" id="userMenu" data-toggle="dropdown"
+        | Olá #{current_user.name}
+        span.caret
+      ul.dropdown-menu role="menu" aria-labelledby="userMenu"
         li = link_to "new post", new_post_path
         li = link_to "me", user_path(current_user)
         li = link_to "edit me", edit_user_path(current_user)
         li = link_to "leave", signout_path
   - else
     li = link_to ".", signin_path
-    / li = link_to "sign up", signup_path, remote: true

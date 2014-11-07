@@ -19,6 +19,8 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate', :git => 'git://github.com/yrgoldteeth/bootstrap-will_paginate.git'
 gem 'font-awesome-rails'
 gem 'instagram'
+gem 'redcarpet'
+gem 'sanitize'
 
 gem 'aws-s3'
 gem "rmagick", '2.13.2'
