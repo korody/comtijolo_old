@@ -2,7 +2,7 @@
   h2 = link_to user.name, user
   .post-photos
     = render 'attachments/first_image', object: user
-  p.content = raw(user.bio).gsub(/\n/, '<br/>').html_safe
+  .post-content = raw(user.bio).gsub(/\n/, '<br/>').html_safe
   .post-photos
     - user.attachments.each_with_index do |attachment, i|
       = content_tag 'div', class: "#{i == 0 ? 'hidden' : ''}" do
@@ -10,7 +10,7 @@
   .post-videos
     - user.videos.each do |video|
       = render video
-  .post-footer
+  .post-footer.clearfix
     .pull-right
       - if signed_in?
         = link_to icon_tag('wrench'), edit_user_path(user), class: 'actions-link'
