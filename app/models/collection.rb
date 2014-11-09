@@ -1,8 +1,10 @@
-class Tag < ActiveRecord::Base
+class Collection < ActiveRecord::Base
 
-  has_many :taggings, dependent: :destroy
-  has_many :posts, through: :taggings
+  has_many :post_collections, dependent: :destroy
+  has_many :posts, through: :post_collections
   has_many :users, through: :posts
+
+  has_many :tags, through: :posts
 
   validates :slug, uniqueness: true, presence: true
 
@@ -16,9 +18,17 @@ class Tag < ActiveRecord::Base
     self.slug ||= name.parameterize
   end
 
+  def self.filter(params)
+    if params[:tag]
+      Post.tagged_with(params[:tag])
+    else
+      @posts = Post.scoped(limit: 10)
+    end
+  end
+
   def self.tokens(query)
-    tags = where("name ilike ?", "%#{query}%")
-    tags.empty? ? [{id: "<<<#{query}>>>", name: "nova tag: \"#{query}\""}] : tags
+    collections = where("name ilike ?", "%#{query}%")
+    collections.empty? ? [{id: "<<<#{query}>>>", name: "nova coleção: \"#{query}\""}] : collections
   end
 
   def self.ids_from_tokens(tokens)

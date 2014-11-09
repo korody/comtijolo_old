@@ -1,0 +1,7 @@
+.collections-pills
+  ul.nav.nav-pills
+    - @collections.each do |c|
+      - if params[:controller] == "categories"
+        = collection_link c.name, category_path(collection: c.slug), current_link: c.slug
+      - else params[:controller] == "posts"
+        li = link_to c.name, collection_path(c)

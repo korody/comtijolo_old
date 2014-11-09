@@ -29,10 +29,12 @@ Comtijolo::Application.routes.draw do
   resources :videos, only: [:create, :destroy, :update]
 
   get 'categories/autocomplete', to: 'categories#autocomplete'
+  get 'collections/autocomplete', to: 'collections#autocomplete'
   get 'tags/autocomplete', to: 'tags#autocomplete'
   get 'posts/autocomplete', to: 'posts#autocomplete'
 
-  resources :categories, only: :show
+  resources :categories, only: [:show, :edit, :update]
+  resources :collections, only: [:show, :edit, :update]
   resources :tags, only: :show
 
   get 'tags/:tag', to: 'categories#show'

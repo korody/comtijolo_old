@@ -11,9 +11,14 @@ class ApplicationController < ActionController::Base
   def sidebar_variables
     @recommended = Post.where(recommended: true)
     @posts_by_month = Post.all(select: "name, slug, html, id, created_at").group_by { |post| post.created_at.beginning_of_month }
-    @tags = Tag.all.order('tags.created_at DESC')
+    @collections = Collection.all.order('collections.created_at DESC')
     @message = Message.new
     @instagram = Instagram.user_recent_media(access_token: ENV['INSTA_ACCESS_TOKEN'], count: 4)
+  end
+
+  def disable_extras
+    @disable_header = true
+    @disable_sidebar = true
   end
 
   def require_login

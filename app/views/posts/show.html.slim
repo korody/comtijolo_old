@@ -2,6 +2,15 @@
 .posts-index
   = render @post
 .post-further-readings
+  - if @collections.any?
+    - @collections.each do |collection|
+      article
+        h4 da série #{collection.name}
+        ul.media-list
+          - collection.posts.each do |post|
+            = content_tag 'li', class: "media" do
+              = render "post_summary", post: post
+.post-further-readings
   - if @complements.any?
     article
       h4 leitura complementar

@@ -6,6 +6,12 @@ $(function() {
     preventDuplicates: true
   });
 
+  $("#post_collection_tokens").tokenInput("/collections/autocomplete", {
+    crossDomain: false,
+    prePopulate: $("#post_collection_tokens").data("load"),
+    preventDuplicates: true
+  });
+
   $("#post_tag_tokens").tokenInput("/tags/autocomplete", {
     crossDomain: false,
     prePopulate: $("#post_tag_tokens").data("load"),

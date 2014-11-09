@@ -15,6 +15,10 @@
     - post.videos.each do |video|
       = render video
   .post-footer.clearfix
+    - if post.collections.any?
+      span 
+        => icon_tag('files-o')
+        => raw post.collections.pluck(:name).map { |c| link_to c, collection_path(c.parameterize), class: 'collection-link' }.join(', ')
     - if post.tags.any?
       span 
         => icon_tag('tag')

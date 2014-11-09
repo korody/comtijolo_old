@@ -25,6 +25,9 @@
     = post.label :category_tokens, "Categories"
     = post.text_field :category_tokens, class: 'form-control input-lg', placeholder: "categorias", data: {load: @post.categories.map(&:attributes)}
   .form-group
+    = post.label :collection_tokens, "Collections"
+    = post.text_field :collection_tokens, class: 'form-control input-lg', placeholder: "coleções", data: {load: @post.collections.map(&:attributes)}
+  .form-group
     = post.label :tag_tokens, "Tags"
     = post.text_field :tag_tokens, class: 'form-control input-lg', placeholder: "tags", data: {load: @post.tags.map(&:attributes)}
   .form-group

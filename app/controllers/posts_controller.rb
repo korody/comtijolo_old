@@ -45,6 +45,7 @@ class PostsController < ApplicationController
 
   def show
     @complements = @post.complements.all
+    @collections = @post.collections.all
   end
 
   def update
@@ -91,13 +92,7 @@ class PostsController < ApplicationController
     @post = Post.find_by_slug!(params[:id].split("/").last)
   end
 
-  def disable_extras
-    @disable_header = true
-    @disable_sidebar = true
-  end
-
   def post_params
-    params.require(:post).permit(:name, :content, :html, :description, :user, :recommended, :category_tokens, :tag_tokens, :complements_tokens, :attachment_ids, :video_ids, attachments_attributes: [:file, :note, :attachable], videos_attributes: [:title, :note, :link, :filmable])
+    params.require(:post).permit(:name, :content, :html, :description, :user, :recommended, :category_tokens, :collection_tokens, :tag_tokens, :complements_tokens, :attachment_ids, :video_ids, attachments_attributes: [:file, :note, :attachable], videos_attributes: [:title, :note, :link, :filmable])
   end
-
 end

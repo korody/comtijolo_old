@@ -3,16 +3,13 @@
   = render 'users/users_menu'
 = render 'posts/hot_posts'
 article
-  h4 etiquetas
-  = render 'tags/tags'
+  h4 séries
+  = render 'collections/collections'
 article
   h4 tijolo com tijolo
-  .pill-wall
-    .nav.nav-pills
-      - @posts_by_month.each do |month, posts|
-        li = link_to (l month, format: :monthly).upcase, archive_posts_path
-/ article
-  / h4 rss feed
+  .nav.nav-pills
+    - @posts_by_month.each do |month, posts|
+      li = link_to (l month, format: :monthly).upcase, archive_posts_path
 - unless controller_name == "contact" || "users"
   article
     h4 diga olá

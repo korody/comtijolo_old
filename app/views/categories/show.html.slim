@@ -1,4 +1,6 @@
 - set_meta_tags site: "comTijolo", title: @category.name, description: @category.description, keywords: @category.tags.name, og: { title: 'comTijolo', url: 'http://www.comtijolo.com/categories/#{@category.name.parameterize}', image: ['https://s3-sa-east-1.amazonaws.com/comtijolo/logo.png'], type: 'article', description: @category.description }
 .posts-index
+  - if @category.collections.any?
+    = render 'collections/collections'
   - @posts.each do |post|
     = render post

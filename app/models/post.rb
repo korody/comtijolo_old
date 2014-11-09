@@ -1,11 +1,14 @@
 class Post < ActiveRecord::Base
-  attr_reader :category_tokens, :tag_tokens, :complements_tokens
+  attr_reader :category_tokens, :collection_tokens, :tag_tokens, :complements_tokens
   attr_accessor :attachment_ids, :video_ids
 
   belongs_to :user
 
   has_many :post_categories, dependent: :destroy
   has_many :categories, through: :post_categories
+
+  has_many :post_collections, dependent: :destroy
+  has_many :collections, through: :post_collections
 
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
@@ -47,9 +50,15 @@ class Post < ActiveRecord::Base
   def self.filter(params)
     if params[:tag]
       tagged_with(params[:tag])
+    elsif params[:collection]
+      from_collection(params[:collection])
     else
       all
     end
+  end
+
+  def self.from_collection(slug)
+    Collection.find_by_slug!(slug).posts
   end
 
   def self.tagged_with(slug)
@@ -58,6 +67,10 @@ class Post < ActiveRecord::Base
 
   def category_tokens=(tokens)
     self.category_ids = Category.ids_from_tokens(tokens)
+  end
+
+  def collection_tokens=(tokens)
+    self.collection_ids = Collection.ids_from_tokens(tokens)
   end
 
   def tag_tokens=(tokens)
