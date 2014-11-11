@@ -1,15 +1,14 @@
 .couple-intro
   = yield :sidebar
-  = render 'users/users_menu'
+article
+  h4 explore nossas séries
+  = render 'collections/collections'
 = render 'posts/hot_posts'
 article
-  h4 séries
-  = render 'collections/collections'
-article
   h4 tijolo com tijolo
-  .nav.nav-pills
+  ul.nav.nav-pills
     - @posts_by_month.each do |month, posts|
-      li = link_to (l month, format: :monthly).upcase, archive_posts_path
+      li = link_to (l month, format: :monthly).upcase, archive_posts_path(anchor: "#{l month, format: :monthly}")
 - unless controller_name == "contact" || "users"
   article
     h4 diga olá

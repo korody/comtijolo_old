@@ -2,4 +2,5 @@
 .posts-index
   - @posts.each do |post|
     = render post
+  = pagination_for @posts
   = render 'posts/posts_summary'

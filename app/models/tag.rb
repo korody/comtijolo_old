@@ -16,14 +16,27 @@ class Tag < ActiveRecord::Base
     self.slug ||= name.parameterize
   end
 
+  # def self.tokens(query)
+  #   tags = where("name ilike ?", "%#{query}%")
+  #   tags.empty? ? [{id: "<<<#{query}>>>", name: "nova tag: \"#{query}\""}] : tags
+  # end
+
   def self.tokens(query)
-    tags = where("name ilike ?", "%#{query}%")
-    tags.empty? ? [{id: "<<<#{query}>>>", name: "nova tag: \"#{query}\""}] : tags
+    query = query.gsub(/[^-\p{Alnum} ]/, '').downcase
+    tags = where("name like ?", "%#{query}%").limit(20)
+    tag = tags.detect { |tag| tag[:name] == query }
+    tags.unshift({ id: "<<<#{query}>>>", name: "nova tag: \"#{query}\"" }) unless tag
+    tags
   end
 
   def self.ids_from_tokens(tokens)
     tokens.gsub!(/<<<(.+?)>>>/) { create!(name: $1).id }
     tokens.split(',')
+  end
+
+  def self.order_by_size
+    select("tags.*, count(taggings.tag_id) as count").
+      joins(:taggings).group("taggings.tag_id, tags.id").reorder('count DESC').limit(30)
   end
 
 private

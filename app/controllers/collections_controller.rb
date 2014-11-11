@@ -5,10 +5,11 @@ class CollectionsController < ApplicationController
   before_action :disable_extras, only: [:new, :create, :update, :edit]
   before_action :sidebar_variables, only: :show
 
-  layout 'posts_sidebar', only: :show
+  layout 'collections_sidebar', only: :show
 
   def show
-    @posts = @collection.posts
+    @posts = @collection.posts.filter(params).paginate(page: params[:page], per_page: 6)
+    @tags = @collection.tags(select: "name, slug, id").uniq.first(30)
   end
 
   def create

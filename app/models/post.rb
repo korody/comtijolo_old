@@ -50,8 +50,6 @@ class Post < ActiveRecord::Base
   def self.filter(params)
     if params[:tag]
       tagged_with(params[:tag])
-    elsif params[:collection]
-      from_collection(params[:collection])
     else
       all
     end

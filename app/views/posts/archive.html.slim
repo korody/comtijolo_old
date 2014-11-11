@@ -3,7 +3,7 @@
   - @posts_by_month.each do |month, posts|
     article
       ul.media-list
-        h4 = (l month, format: :monthly_long).upcase
+        h4 id="#{l month, format: :monthly}" = (l month, format: :monthly_long).upcase
         - posts.each do |post|
           = content_tag 'li', class: "media" do
             = render 'post_summary', post: post

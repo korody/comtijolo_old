@@ -8,9 +8,8 @@ class CategoriesController < ApplicationController
   layout 'categories_sidebar', only: :show
 
   def show
-    category_posts = @category.posts
-    @posts = category_posts.filter(params).order('posts.created_at DESC').paginate(page: params[:page], per_page: 20)
-    @collections = @category.collections.uniq
+    @posts = @category.posts.filter(params).paginate(page: params[:page], per_page: 3)
+    @tags = @category.tags.order_by_size
   end
 
   def create

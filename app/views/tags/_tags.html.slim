@@ -1,6 +1,2 @@
-.nav.nav-pills
-  - @tags.limit(20).each do |t|
-    - if params[:controller] == "categories"
-      li = link_to t.name, category_path(tag: t.name.parameterize)
-    - else params[:controller] == "posts"
-      li = link_to t.name, tag_path(t)
+ul.nav.nav-pills
+  = render @tags

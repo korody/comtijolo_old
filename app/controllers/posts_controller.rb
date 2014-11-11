@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   layout 'posts_sidebar', only: [:index, :show, :archive]
 
   def index
-    @posts = Post.first(3)#.paginate(page: params[:page], per_page: 20)
+    @posts = Post.paginate(page: params[:page], per_page: 3)
     @recent_posts = Post.all(select: "name, slug, html, id").first(6)
   end
 
@@ -45,7 +45,6 @@ class PostsController < ApplicationController
 
   def show
     @complements = @post.complements.all
-    @collections = @post.collections.all
   end
 
   def update
