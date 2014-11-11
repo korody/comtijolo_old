@@ -27,7 +27,6 @@ class Collection < ActiveRecord::Base
   end
 
   def self.tokens(query)
-    query = query.gsub(/[^-\p{Alnum} ]/, '').downcase
     collections = where("name like ?", "%#{query}%").limit(20)
     collection = collections.detect { |collection| collection[:name] == query }
     collections.unshift({ id: "<<<#{query}>>>", name: "nova série: \"#{query}\"" }) unless collection

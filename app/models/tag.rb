@@ -22,7 +22,6 @@ class Tag < ActiveRecord::Base
   # end
 
   def self.tokens(query)
-    query = query.gsub(/[^-\p{Alnum} ]/, '').downcase
     tags = where("name like ?", "%#{query}%").limit(20)
     tag = tags.detect { |tag| tag[:name] == query }
     tags.unshift({ id: "<<<#{query}>>>", name: "nova tag: \"#{query}\"" }) unless tag
