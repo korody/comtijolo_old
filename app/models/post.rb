@@ -26,7 +26,7 @@ class Post < ActiveRecord::Base
   before_validation :generate_slug
   before_save :cook_html
 
-  default_scope order('created_at DESC')    
+  default_scope { order(created_at: :desc) }
 
   scope :next, lambda {|id| where("id > ?",id).order("id ASC") } # this is the default ordering for AR
   scope :previous, lambda {|id| where("id < ?",id).order("id DESC") }
