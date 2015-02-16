@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   layout 'users_sidebar', only: [:index, :show]
 
   def index
-    @categories = Category.all(select: "name, slug, id")
+    @categories = Category.select(:name, :slug, :id)
   end
 
   def new
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def show
     @posts = @user.posts.all
-    @categories = Category.all(select: "name, slug, id")
+    @categories = Category.select(:name, :slug, :id)
   end
 
   def edit

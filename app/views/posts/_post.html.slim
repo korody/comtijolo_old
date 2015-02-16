@@ -1,7 +1,7 @@
 .post
   h2  
     span => link_to_unless @post, post.name, post
-    .post-date.pull-right => post.created_at.strftime('%m')
+    .post-date.pull-right => l post.created_at, format: :date_month
   h4 => raw post.categories.pluck(:name).map { |c| link_to c, category_path(c.parameterize), class: 'category-link' }.join(', ') 
   .post-photos
     = render 'attachments/first_image', object: post

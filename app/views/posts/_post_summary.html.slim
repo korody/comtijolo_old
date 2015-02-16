@@ -3,4 +3,4 @@
 .media-body.clearfix
   h4.media-heading => link_to post.name, post
   p => truncate strip_tags(post.html), length: 285, separator: ' ', escape: false
-  h6 em #{raw post.categories.pluck(:name).map { |c| link_to c, category_path(c), class: 'category-link' }.join(', ')} sobre #{raw post.tags.pluck(:name).map { |t| link_to t, tag_path(t), class: 'tag-link' }.join(', ')}
+  h6 em #{raw post.categories.pluck(:name, :slug).map { |c| link_to c[0], category_path(c[1]), class: 'category-link' }.join(', ')} sobre #{raw post.tags.pluck(:name, :slug).map { |t| link_to t[0], tag_path(t[1]), class: 'tag-link' }.join(', ')}

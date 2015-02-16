@@ -25,12 +25,13 @@ gem 'will_paginate-bootstrap'
 
 gem 'font-awesome-rails'
 
-# gem 'aws-sdk'
 gem 'aws-s3'
-gem "rmagick", '2.13.2'
+gem "rmagick", '2.13.4'
 gem 'carrierwave'
+
 gem 'jquery-fileupload-rails'
 gem 'best_in_place', github: 'bernat/best_in_place'
+
 gem 'meta-tags', require: 'meta_tags'
 
 # gem 'heroku'
@@ -43,6 +44,12 @@ gem 'instagram'
 
 gem 'figaro'
 
+gem 'redcarpet'
+
+gem 'httparty'
+
+gem 'sanitize'
+
 group :development, :test do
   gem 'spring'
   gem 'faker'
@@ -50,7 +57,7 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem "fog"
+  gem 'fog'
 end
 
 group :doc do

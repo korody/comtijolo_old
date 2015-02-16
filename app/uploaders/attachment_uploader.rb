@@ -2,6 +2,7 @@
 class AttachmentUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::RMagick
+  include CarrierWave::MimeTypes
 
   # if Rails.env.production?
   #   storage :fog

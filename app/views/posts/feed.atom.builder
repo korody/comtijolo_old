@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  feed.title "comTijolo posts"
+  feed.title "relatos comTijolo"
   feed.updated @posts.maximum(:updated_at)
   
   @posts.each do |post|

@@ -202,6 +202,7 @@ pt-BR:
       short: ! '%d/%m, %H:%M h'
       monthly: ! '%b%y'
       monthly_long: ! '%B de %Y'
+      date_month: ! '%d%b'
     pm: ''
 
   will_paginate:

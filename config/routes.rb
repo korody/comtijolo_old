@@ -23,7 +23,11 @@ Comtijolo::Application.routes.draw do
     get :archive, on: :collection
   end
 
-  resources :posts, only: [:index, :new, :create]
+  concern :paginatable do
+    get '(page/:page)', action: :index, on: :collection, as: ''
+  end
+
+  resources :posts, only: [:index, :new, :create], concerns: :paginatable
 
   resources :attachments, only: [:create, :destroy, :update]
   resources :videos, only: [:create, :destroy, :update]

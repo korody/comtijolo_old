@@ -1,7 +1,7 @@
 # encoding: UTF-8
 class ApplicationController < ActionController::Base
   include SessionsHelper
-  # include HTTParty
+  include HTTParty
 
   protect_from_forgery with: :exception
   add_flash_types :error, :success, :info, :warning
