@@ -9,7 +9,7 @@ atom_feed do |feed|
       entry.author do |author|
         author.name post.user.name
       end
-      entry.link href: post.cover, rel:"enclosure", type:"image/jpeg"
+      # entry.link href: photo.file.url(:large), rel:"enclosure", type:"image/jpeg"
     end
   end
 end
