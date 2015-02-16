@@ -34,8 +34,6 @@ gem 'best_in_place', github: 'bernat/best_in_place'
 
 gem 'meta-tags', require: 'meta_tags'
 
-# gem 'heroku'
-
 gem 'tzinfo-data'
 
 gem 'responders'
@@ -49,6 +47,10 @@ gem 'redcarpet'
 gem 'httparty'
 
 gem 'sanitize'
+
+platform :ruby do
+  gem 'unicorn'
+end
 
 group :development, :test do
   gem 'spring'

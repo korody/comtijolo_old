@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  feed.title "relatos comTijolo"
+  feed.title "comTijolo"
   feed.updated @posts.maximum(:updated_at)
   
   @posts.each do |post|
@@ -9,6 +9,7 @@ atom_feed do |feed|
       entry.author do |author|
         author.name post.user.name
       end
+      entry.link href: post.cover, rel:"enclosure", type:"image/jpeg"
     end
   end
 end

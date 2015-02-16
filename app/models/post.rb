@@ -31,6 +31,18 @@ class Post < ActiveRecord::Base
   scope :next, lambda {|id| where("id > ?",id).order("id ASC") } # this is the default ordering for AR
   scope :previous, lambda {|id| where("id < ?",id).order("id DESC") }
 
+  def all_images
+    attachments.map { |attachment| attachment.file.medium.url.to_s }    
+  end
+
+  def cover
+    all_images.first
+  end
+
+  def other_images
+    all_images.drop(1)
+  end
+
   def next
     Post.next(self.id).first
   end

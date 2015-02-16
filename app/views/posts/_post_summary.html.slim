@@ -1,5 +1,4 @@
-- for attachment in post.attachments.limit(1)
-  = link_to (image_tag attachment.file_url(:medium).to_s, class: 'img-responsive media-object'), post, class: 'pull-left' if attachment
+= link_to (image_tag post.cover, class: 'img-responsive media-object'), post, class: 'pull-left' if post.cover
 .media-body.clearfix
   h4.media-heading => link_to post.name, post
   p => truncate strip_tags(post.html), length: 285, separator: ' ', escape: false
