@@ -9,7 +9,10 @@ atom_feed do |feed|
       entry.author do |author|
         author.name post.user.name
       end
-      # entry.link href: photo.file.url(:large), rel:"enclosure", type:"image/jpeg"
+      entry.link href: post.attachments.first.file_url(:regular), rel:"enclosure", type:"image/jpeg"
+      entry.photo image_tag post.attachments.first.file_url(:regular)
+      entry.image image_tag post.attachments.first.file_url(:regular)
+      entry <<  "<media:thumbnail  xmlns:media='http://search.yahoo.com/mrss/' url='#{post.attachments.first.file_url(:regular)}' height='150' width='300' />"
     end
   end
 end

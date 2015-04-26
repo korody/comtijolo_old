@@ -6,6 +6,8 @@ class Category < ActiveRecord::Base
   has_many :collections, through: :posts
   has_many :tags, through: :posts
 
+  CATEGORIES = %w[ser-esponja o-la-em-casa pira-na-inspira pe-na-meta pulando-a-cerca]
+
   validates :slug, uniqueness: true, presence: true
 
   before_validation :generate_slug
@@ -16,6 +18,10 @@ class Category < ActiveRecord::Base
 
   def generate_slug
     self.slug ||= name.parameterize
+  end
+
+  def self.list
+    CATEGORIES
   end
 
   def self.tokens(query)

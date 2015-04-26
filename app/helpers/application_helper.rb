@@ -15,7 +15,7 @@ module ApplicationHelper
 
   def category_nav(category)
     content_tag :li do
-      link_to ".", category_path(category.slug), id: category.slug, title: "categoria #{category.name}"
+      link_to ".", category_path(category), id: category, title: "categoria #{category.gsub('-', ' ')}"
     end
   end
   
