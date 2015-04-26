@@ -1,4 +1,10 @@
 module ApplicationHelper
+  def present(model)
+    klass = "#{model.class}Presenter".constantize
+    presenter = klass.new(model, self)
+    yield(presenter) if block_given?
+  end
+
   def tag_link(title, options = {})
     current_link = options.delete(:current_link)
     options[:class] = (current_link == params[:tag]) ? 'active' : nil

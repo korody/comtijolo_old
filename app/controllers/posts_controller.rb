@@ -45,6 +45,7 @@ class PostsController < ApplicationController
 
   def show
     @complements = @post.complements.all
+    @collections = @post.collections.all
   end
 
   def update

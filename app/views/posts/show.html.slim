@@ -2,8 +2,8 @@
 .posts-index
   = render @post
 .post-further-readings
-  - if @post.collections.any?
-    - @post.collections.each do |collection|
+  - if @collections.any?
+    - @collections.each do |collection|
       article
         h4 da série #{collection.name}
         ul.media-list

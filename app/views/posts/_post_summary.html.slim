@@ -1,4 +1,4 @@
-- for attachment in post.attachments.limit(1)
+- for attachment in post.attachments.take(1)
   = link_to (image_tag attachment.file_url(:medium).to_s, class: 'img-responsive media-object'), post, class: 'pull-left' if attachment
 .media-body.clearfix
   h4.media-heading => link_to post.name, post

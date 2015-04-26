@@ -1,41 +1,37 @@
-.post
-  h2  
-    span => link_to_unless @post, post.name, post
-    .post-date.pull-right => l post.created_at, format: :date_month
-  h4 => raw post.categories.pluck(:name).map { |c| link_to c, category_path(c.parameterize), class: 'category-link' }.join(', ') 
-  .post-photos
-    = render 'attachments/first_image', object: post
-  .post-content 
-    = raw post.html
-  .post-photos
-    - post.attachments.each_with_index do |attachment, i|
-      = content_tag 'div', class: "#{i == 0 ? 'hidden' : ''}" do
-        = render attachment
-  .post-videos
-    - post.videos.each do |video|
-      = render video
-  .post-footer.clearfix
-    - if post.collections.any?
+- present(post) do |post|
+  .post
+    h2  
+      span => post.name_link
+      .post-date.pull-right => post.creation
+      h4 = post.categories
+    .post-photos
+      = render 'attachments/attachment', attachment: post.first_attachment
+    .post-content 
+      = post.content
+    .post-photos
+      = render post.other_attachments
+    .post-videos
+      = render post.videos 
+    .post-footer.clearfix
+      - if post.collections.any?
+        span 
+          => icon_tag('files-o')
+          => post.collections_list
+      - if post.tags.any?
+        span 
+          => icon_tag('tag')
+          => post.tags_list
+      - if @post
+        span.pull-right
+          - if signed_in?
+            = post.recommend
+            = link_to icon_tag('wrench'), edit_post_path(@post), class: 'actions-link'
+            = link_to icon_tag('trash'), @post, class: 'actions-link', data: { confirm: "Certeza que quer apagar o post?" }, method: :delete
+      - else
+        span 
+          => icon_tag('bullhorn')
+          => post.comments
       span 
-        => icon_tag('files-o')
-        => raw post.collections.pluck(:name).map { |c| link_to c, collection_path(c.parameterize), class: 'collection-link' }.join(', ')
-    - if post.tags.any?
-      span 
-        => icon_tag('tag')
-        => raw post.tags.pluck(:name).map { |t| link_to t, tag_path(t.parameterize), class: 'tag-link' }.join(', ')
-    - unless @post
-      span 
-        => icon_tag('bullhorn')
-        => link_to post.name, polymorphic_path([post], anchor: 'disqus_thread'), class: 'comment-count'
-    span 
-      => icon_tag('pencil')
-      => link_to post.user.name, post.user, class: 'post-owner' if post.user
-    span.pull-right
-      - if signed_in?
-        - if post.recommended?
-          = link_to icon_tag('star'), unrecommend_post_path(post), class: 'actions-link', data: { confirm: "Remover recomendação?" }, method: :patch
-        - else
-          = link_to icon_tag('star-o'), recommend_post_path(post), class: 'actions-link', data: { confirm: "Recomendar post?" }, method: :patch
-        = link_to icon_tag('wrench'), edit_post_path(post), class: 'actions-link'
-        = link_to icon_tag('trash'), post, class: 'actions-link', data: { confirm: "Certeza que quer apagar o post?" }, method: :delete
-.fb-like data-href='http://www.comtijolo.com/#{post.name.parameterize}' data-layout='standard' data-action='like' data-show-faces='true' data-share='false'
+        => icon_tag('pencil')
+        => link_to post.author.name, post.author, class: 'post-owner' if post.author
+  .fb-like data-href='http://www.comtijolo.com/#{post.name.parameterize}' data-layout='standard' data-action='like' data-show-faces='true' data-share='false'
