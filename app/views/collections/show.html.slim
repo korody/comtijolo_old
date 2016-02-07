@@ -1,0 +1,5 @@
+- set_meta_tags site: "comTijolo", title: @collection.name, keywords: @collection.name, og: { title: 'comTijolo', url: 'http://www.comtijolo.com/collections/#{@collection.slug}', image: ['https://s3-sa-east-1.amazonaws.com/comtijolo/logo.png'], type: 'article' }
+.posts-index
+  - @posts.each do |post|
+    = render post
+  = pagination_for @posts

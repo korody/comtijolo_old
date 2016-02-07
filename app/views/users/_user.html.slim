@@ -1,22 +1,20 @@
-.post
-  h2 = link_to user.name, user
-  .post-photos
-    = render 'attachments/first_image', object: user
-  p.content = raw(user.bio).gsub(/\n/, '<br/>').html_safe
-  .post-photos
-    - user.attachments.each_with_index do |attachment, i|
-      = content_tag 'div', class: "#{i == 0 ? 'hidden' : ''}" do
-        = render attachment
-  .post-videos
-    - user.videos.each do |video|
-      = render video
-  .post-footer
-    .pull-right
-      - if signed_in?
-        = link_to icon_tag('wrench'), edit_user_path(user), class: 'actions-link'
-        = link_to icon_tag('trash'), user, class: 'actions-link', method: :delete
-.fb-like data-href='http://www.comtijolo.com/users/#{user.name.parameterize}' data-layout='standard' data-action='like' data-show-faces='true' data-share='false'
-article
-  h4 quer conversar? Me manda uma mensagem : P 
-  .contact-form
-    = render 'contact/form', message: @message
+- present(user) do |user|
+  .post
+    h2 = user.name
+    .post-photos
+      = render 'attachments/attachment', attachment: user.first_attachment
+    .post-content = user.bio
+    .post-photos
+      = render user.other_attachments
+    .post-videos
+      = render user.videos 
+    .post-footer.clearfix
+      .pull-right
+        - if signed_in?
+          = link_to icon_tag('wrench'), edit_user_path(@user), class: 'actions-link'
+          = link_to icon_tag('trash'), @user, class: 'actions-link', method: :delete
+  .fb-like data-href='http://www.comtijolo.com/users/#{user.name.parameterize}' data-layout='standard' data-action='like' data-show-faces='true' data-share='false'
+  article
+    h4 quer conversar? Me manda uma mensagem : P 
+    .contact-form
+      = render 'contact/form', message: @message

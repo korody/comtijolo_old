@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140406200415) do
+ActiveRecord::Schema.define(version: 20141108221803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 20140406200415) do
   add_index "attachments", ["attachable_id", "attachable_type"], name: "index_attachments_on_attachable_id_and_attachable_type", using: :btree
 
   create_table "categories", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "collections", force: true do |t|
     t.string   "name"
     t.text     "description"
     t.string   "slug"
@@ -58,6 +66,16 @@ ActiveRecord::Schema.define(version: 20140406200415) do
   add_index "post_categories", ["category_id"], name: "index_post_categories_on_category_id", using: :btree
   add_index "post_categories", ["post_id"], name: "index_post_categories_on_post_id", using: :btree
 
+  create_table "post_collections", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "collection_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "post_collections", ["collection_id"], name: "index_post_collections_on_collection_id", using: :btree
+  add_index "post_collections", ["post_id"], name: "index_post_collections_on_post_id", using: :btree
+
   create_table "posts", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -67,6 +85,7 @@ ActiveRecord::Schema.define(version: 20140406200415) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "recommended", default: false, null: false
+    t.text     "html"
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree

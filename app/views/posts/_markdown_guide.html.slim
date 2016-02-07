@@ -1,0 +1,53 @@
+= content_for :markdown_guide do
+  .markdown-guide
+    table.table.table-bordered
+      thead
+        tr
+          th markdown
+          th resultado
+      tbody
+        tr
+          => mtd "`**negrito**`"
+          => mtd "**negrito**"
+        tr
+          => mtd "`*itálico*`"
+          => mtd "*itálico*"
+        tr
+          => mtd "`***negrito em itálico***`"
+          => mtd "***negrito em itálico***"
+        tr
+          => mtd "`Um [link](http://comtijolo.com 'blog').`"
+          => mtd "Um [link](http://comtijolo.com 'blog')."
+        tr
+          => mtd "`- item`"
+          => mtd "- item"
+        tr
+          => mtd "`1. lista`"
+          => mtd "1. lista"
+        tr
+          => mtd "`> How you doin'?`"
+          => mtd "> How you doin'?"
+        tr
+          => mtd "`~~im~~possível`"
+          => mtd "~~im~~possível"
+        tr
+          => mtd "`# título 1`"
+          => mtd "# título 1"
+        tr
+          => mtd "`## título 2`"
+          => mtd "## título 2"
+        tr
+          => mtd "`### título 3`"
+          => mtd "### título 3"
+        tr
+          => mtd "`#### título 4`"
+          => mtd "#### título 4"
+        tr
+          => mtd "`##### título 5`"
+          => mtd "##### título 5"
+        tr
+          => mtd "`###### título 6`"
+          => mtd "###### título 6"
+        tr
+          => mtd "`---`"
+          => mtd "---"

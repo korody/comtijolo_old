@@ -9,6 +9,7 @@ Comtijolo::Application.routes.draw do
 
   get '/casal', to: 'users#index'
   get '/contato', to: 'contact#index'
+  get '/feed', to: 'posts#feed', as: :feed
 
   get :search, to: 'searches#new'
 
@@ -22,16 +23,22 @@ Comtijolo::Application.routes.draw do
     get :archive, on: :collection
   end
 
-  resources :posts, only: [:index, :new, :create]
+  concern :paginatable do
+    get '(page/:page)', action: :index, on: :collection, as: ''
+  end
+
+  resources :posts, only: [:index, :new, :create], concerns: :paginatable
 
   resources :attachments, only: [:create, :destroy, :update]
   resources :videos, only: [:create, :destroy, :update]
 
   get 'categories/autocomplete', to: 'categories#autocomplete'
+  get 'collections/autocomplete', to: 'collections#autocomplete'
   get 'tags/autocomplete', to: 'tags#autocomplete'
   get 'posts/autocomplete', to: 'posts#autocomplete'
 
-  resources :categories, only: :show
+  resources :categories, only: [:show, :edit, :update]
+  resources :collections, only: [:show, :edit, :update]
   resources :tags, only: :show
 
   get 'tags/:tag', to: 'categories#show'

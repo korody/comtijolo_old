@@ -1,23 +1,23 @@
 .couple-intro
   = yield :sidebar
-  = render 'users/users_menu'
+article
+  h4 explore nossas séries
+  = render 'collections/collections'
 = render 'posts/hot_posts'
 article
-  h4 séries de tijolos
-  = render 'tags/tags'
-article
   h4 tijolo com tijolo
-  .pill-wall
-    .nav.nav-pills
-      - @posts_by_month.each do |month, posts|
-        li = link_to (l month, format: :monthly).upcase, archive_posts_path
-/ article
-  / h4 rss feed
+  ul.nav.nav-pills
+    - @posts_by_month.each do |month, posts|
+      li = link_to (l month, format: :monthly).upcase, archive_posts_path(anchor: "#{l month, format: :monthly}")
 - unless controller_name == "contact" || "users"
   article
     h4 diga olá
     .contact-form
       = render 'contact/form', message: @message
 article
-  h4 curte lá
+  h4 @comTijolo no instagram
+  - @instagram.each do |media_item|
+    = link_to image_tag(media_item.images.thumbnail.url), 'http://instagram.com/comtijolo', target: '_blank', title: "espiar instagram do comTijolo"  
+article
+  h4 comTijolo no facebook
   .fb-like-box data-href='http://www.facebook.com/comtijolo' data-height='400' data-width='300' data-colorscheme='light' data-show-faces='true' data-header='false' data-stream='false' data-show-border='false'

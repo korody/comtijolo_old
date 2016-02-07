@@ -1,10 +1,10 @@
-# encoding:   utf-8
 class ContactController < ApplicationController
   before_action :sidebar_variables, only: [:index, :new]
 
-  layout 'posts_sidebar', only: :index
+  layout 'users_sidebar', only: :index
 
   def index
+    @categories = Category.select(:name, :slug, :id)
   end
 
   def new
@@ -28,5 +28,4 @@ class ContactController < ApplicationController
   def message_params
     params.require(:message).permit(:name, :email, :subject, :text)
   end
-
 end

@@ -1,7 +1,16 @@
 - set_meta_tags site: "comTijolo", title: @post.name, description: @post.description, keywords: @post.tags.pluck(:name).join(' '), og: { title: "#{@post.name} | blog comTijolo", description: @post.description, image: "#{@post.attachments.map { |a| a.file_url }.join('')}" }
 .posts-index
   = render @post
-.post-complements
+.post-further-readings
+  - if @collections.any?
+    - @collections.each do |collection|
+      article
+        h4 da série #{collection.name}
+        ul.media-list
+          - collection.posts.each do |post|
+            = content_tag 'li', class: "media" do
+              = render "post_summary", post: post
+.post-further-readings
   - if @complements.any?
     article
       h4 leitura complementar

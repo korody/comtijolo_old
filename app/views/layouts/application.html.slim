@@ -8,6 +8,8 @@ html
     meta name='viewport' content='width=device-width, initial-scale=1.0'
     meta https-equiv="Content-type" content="text/html; charset=utf-8"
     meta https-equiv="content-language" content="pt-BR"
+    link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto"
+    = auto_discovery_link_tag(:atom, feed_url(format: "atom"))
     = display_meta_tags site: 'comtijolo'
   body
     #wrap
@@ -22,6 +24,7 @@ html
             .col-lg-4.col-lg-offset-1
               .sidebar
                 = render 'layouts/sidebar' unless @disable_sidebar
+                = yield :markdown_guide
       = render 'layouts/disqus_count'
       #push
     = render 'layouts/footer'

@@ -1,24 +1,37 @@
-.post
-  h2 = "#{link_to post.name, post} <p class='post-date pull-right'>#{post.created_at.strftime('%m')}</p>".html_safe
-  h4 = raw post.categories.pluck(:name).map { |c| link_to c, category_path(c.parameterize), class: 'category-link' }.join(', ') 
-  .post-photos
-    = render 'attachments/first_image', object: post
-  p.content = raw(post.content).gsub(/\n/, '<br/>').html_safe
-  .post-photos
-    - post.attachments.each_with_index do |attachment, i|
-      = content_tag 'div', class: "#{i == 0 ? 'hidden' : ''}" do
-        = render attachment
-  .post-videos
-    - post.videos.each do |video|
-      = render video
-  .post-footer
-    = "#{icon_tag('tag') if post.tags.any?}#{raw post.tags.pluck(:name).map { |t| link_to t, tag_path(t.parameterize), class: 'tag-link' }.join(', ')} #{icon_tag('bullhorn') unless @post}#{link_to post.name, polymorphic_path([post], anchor: 'disqus_thread'), class: 'comment-count' unless @post} #{icon_tag('pencil')}#{link_to post.user.name, post.user, class: 'post-owner' if post.user}".html_safe
-    .pull-right
-      - if signed_in?
-        - if post.recommended?
-          = link_to icon_tag('star'), unrecommend_post_path(post), class: 'actions-link', data: { confirm: "Desrecomendar post?" }, method: :patch
-        - else
-          = link_to icon_tag('star-empty'), recommend_post_path(post), class: 'actions-link', data: { confirm: "Recomendar post?" }, method: :patch
-        = link_to icon_tag('wrench'), edit_post_path(post), class: 'actions-link'
-        = link_to icon_tag('trash'), post, class: 'actions-link', data: { confirm: "Certeza que quer apagar o post?" }, method: :delete
-.fb-like data-href='http://www.comtijolo.com/#{post.name.parameterize}' data-layout='standard' data-action='like' data-show-faces='true' data-share='false'
+- present(post) do |post|
+  .post
+    h2  
+      span => post.name_link
+      .post-date.pull-right => post.creation
+      h4 = post.categories
+    .post-photos
+      = render 'attachments/attachment', attachment: post.first_attachment
+    .post-content 
+      = post.content
+    .post-photos
+      = render post.other_attachments
+    .post-videos
+      = render post.videos 
+    .post-footer.clearfix
+      - if post.collections.any?
+        span 
+          => icon_tag('files-o')
+          => post.collections_list
+      - if post.tags.any?
+        span 
+          => icon_tag('tag')
+          => post.tags_list
+      - if @post
+        span.pull-right
+          - if signed_in?
+            = post.recommend
+            = link_to icon_tag('wrench'), edit_post_path(@post), class: 'actions-link'
+            = link_to icon_tag('trash'), @post, class: 'actions-link', data: { confirm: "Certeza que quer apagar o post?" }, method: :delete
+      - else
+        span 
+          => icon_tag('bullhorn')
+          => post.comments
+      span 
+        => icon_tag('pencil')
+        => link_to post.author.name, post.author, class: 'post-owner' if post.author
+  .fb-like data-href='http://www.comtijolo.com/#{post.name.parameterize}' data-layout='standard' data-action='like' data-show-faces='true' data-share='false'

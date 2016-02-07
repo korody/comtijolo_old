@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   respond_to :html, :js, :json
 
-  before_action :require_login, except: [:show, :index] 
+  before_action :require_login, except: [:show, :index, :archive, :feed] 
   before_action :find_post, only: [:show, :edit, :update, :destroy, :recommend, :unrecommend]
   before_action :disable_extras, only: [:new, :create, :update, :edit]
   before_action :sidebar_variables, only: [:show, :index, :archive]
@@ -9,10 +9,15 @@ class PostsController < ApplicationController
   layout 'posts_sidebar', only: [:index, :show, :archive]
 
   def index
-    @posts = Post.order('posts.created_at DESC')#.paginate(page: params[:page], per_page: 20)
+    @posts = Post.paginate(page: params[:page], per_page: 3)
+    @recent_posts = Post.select(:name, :slug, :html, :id).first(6)
   end
 
   def archive
+  end
+
+  def feed
+    @posts = Post.all
   end
 
   def new
@@ -40,6 +45,7 @@ class PostsController < ApplicationController
 
   def show
     @complements = @post.complements.all
+    @collections = @post.collections.all
   end
 
   def update
@@ -86,13 +92,7 @@ class PostsController < ApplicationController
     @post = Post.find_by_slug!(params[:id].split("/").last)
   end
 
-  def disable_extras
-    @disable_header = true
-    @disable_sidebar = true
-  end
-
   def post_params
-    params.require(:post).permit(:name, :content, :description, :user, :recommended, :category_tokens, :tag_tokens, :complements_tokens, :attachment_ids, :video_ids, attachments_attributes: [:file, :note, :attachable], videos_attributes: [:title, :note, :link, :filmable])
+    params.require(:post).permit(:name, :content, :html, :description, :user, :recommended, :category_tokens, :collection_tokens, :tag_tokens, :complements_tokens, :attachment_ids, :video_ids, attachments_attributes: [:file, :note, :attachable], videos_attributes: [:title, :note, :link, :filmable])
   end
-
 end

@@ -1,0 +1,12 @@
+= render 'errors', object: @category
+= form_for @category do |category|
+  .form-group
+    = category.label :name
+    = category.text_field :name, class: 'form-control input-lg', placeholder: "um nome"
+  .form-group
+    = category.label :description
+    = category.text_area :description, rows: 4, class: 'form-control input-lg', placeholder: "uma descrição breve"
+  / .form-group
+    = category.label :post_tokens, "Posts"
+    = category.text_field :post_tokens, class: 'form-control input-lg', placeholder: "posts", data: {load: @category.posts.map(&:attributes)}
+  = category.submit "done", class: 'btn btn-block btn-lg btn-success'

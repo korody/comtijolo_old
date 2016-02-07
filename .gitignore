@@ -16,3 +16,6 @@
 /tmp
 
 public/attachment
+
+# Ignore application configuration
+/config/application.yml

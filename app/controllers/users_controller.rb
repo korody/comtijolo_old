@@ -1,12 +1,13 @@
-# encoding: UTF-8
 class UsersController < ApplicationController
   before_action :require_login, only: [:edit, :delete]
   before_action :find_user, only: [:show, :edit, :update]
   before_action :disable_extras, only: [:new, :create, :update, :edit]
   before_action :sidebar_variables, only: [:index, :show]
 
+  layout 'users_sidebar', only: [:index, :show]
+
   def index
-    @tags = Tag.all.order('tags.created_at DESC')
+    @categories = Category.select(:name, :slug, :id)
   end
 
   def new
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
 
   def show
     @posts = @user.posts.all
-    @tags = @user.tags.order('tags.created_at DESC')
+    @categories = Category.select(:name, :slug, :id)
   end
 
   def edit

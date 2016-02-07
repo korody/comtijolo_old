@@ -11,12 +11,11 @@ if Rails.env.development? or Rails.env.production? # Using Amazon S3 for Develop
     config.cache_dir = 'attachments-cache'
 
     config.fog_credentials = {
-      :provider               => 'AWS',       # required
-      :aws_access_key_id      => 'AKIAJYBTFMGBKR2YOIDQ',       # required
-      :aws_secret_access_key  => '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',       # required
-      :region                 => 'sa-east-1'  # optional, defaults to 'us-east-1'
+      :provider               => ENV['STORAGE_PROVIDER'],
+      :aws_access_key_id      => ENV['AWS_ACCESS_KEY_ID'],
+      :aws_secret_access_key  => ENV['AWS_SECRET_ACCESS_KEY'],
+      :region                 => ENV['S3_REGION']
     }
-    config.fog_directory  = 'comtijolo'                     # required
-    # config.fog_host       = false                                  # optional, defaults to true
+    config.fog_directory  = ENV['S3_BUCKET']
   end
 end

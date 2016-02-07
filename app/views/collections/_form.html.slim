@@ -1,0 +1,12 @@
+= render 'errors', object: @collection
+= form_for @collection do |collection|
+  .form-group
+    = collection.label :name
+    = collection.text_field :name, class: 'form-control input-lg', placeholder: "um nome"
+  .form-group
+    = collection.label :description
+    = collection.text_area :description, rows: 4, class: 'form-control input-lg', placeholder: "uma descrição breve"
+  / .form-group
+    = collection.label :post_tokens, "Posts"
+    = collection.text_field :post_tokens, class: 'form-control input-lg', placeholder: "posts", data: {load: @collection.posts.map(&:attributes)}
+  = collection.submit "done", class: 'btn btn-block btn-lg btn-success'

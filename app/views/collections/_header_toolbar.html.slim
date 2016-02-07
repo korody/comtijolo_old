@@ -1,0 +1,6 @@
+.page-header
+  p.lead.text-muted.pull-left da série
+  h1 &nbsp;#{@collection.name}
+  .header-description => markdown @collection.description if @collection.description
+  - if signed_in?
+    span => link_to icon_tag('gear'), edit_collection_path

@@ -1,6 +1,3 @@
 ul.nav.nav-tabs.nav-justified
-  li = link_to ".", category_path('o-la-em-casa'), id: 'home'
-  li = link_to ".", category_path('um-quarto-sobre-dois'), id: 'relationship'
-  li = link_to ".", category_path('ser-esponja'), id: 'health'
-  li = link_to ".", category_path('pira-na-inspira'), id: 'inspiration'
-  li = link_to ".", category_path('pulando-a-cerca'), id: 'out'
+  - Category.list.each do |category|
+    = category_nav category

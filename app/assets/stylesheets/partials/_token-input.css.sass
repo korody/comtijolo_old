@@ -1,0 +1,101 @@
+@import 'layout/presets'
+
+/* Example tokeninput style #1: Token vertical list*/
+ul.token-input-list
+    background-color: white
+    border: 1px solid #ccc
+    border-radius: 6px
+    clear: left
+    color: #555
+    cursor: text
+    font-size: 18px
+    height: 1%
+    height: auto !important 
+    line-height: 1.33
+    list-style-type: none
+    margin: 0
+    min-height: 45px 
+    overflow: hidden 
+    padding: 0
+    z-index: 999
+
+ul.token-input-list li
+    list-style-type: none
+
+ul.token-input-list li input
+    border: 0
+    padding: 10px 16px
+    width: 100%
+    -webkit-appearance: caret
+
+li.token-input-token
+    border: 1px solid $border
+    border-radius: 6px
+    background-color: $base
+    color: $text-light
+    cursor: default
+    display: block
+    float: left
+    height: 1%
+    height: auto !important
+    margin: 4px 0 4px 0
+    overflow: hidden
+    white-space: nowrap
+
+li.token-input-token p
+    color: #555
+    float: left
+    padding: 5px 16px
+    margin: 0
+
+li.token-input-token span
+    color: $text-light
+    cursor: pointer
+    float: right
+    padding: 5px 16px
+
+li.token-input-selected-token
+    background-color: $mustard
+    color: #fff
+
+li.token-input-selected-token span
+    color: white
+
+div.token-input-dropdown
+    background-color: $base
+    border: 1px solid #ccc
+    border-top: 0
+    cursor: default
+    font-size: 14px
+    overflow: hidden
+    position: absolute
+    width: 100%
+    z-index: 1
+
+div.token-input-dropdown p
+    color: $text-light
+    margin: 0
+    padding: 10px 16px
+
+div.token-input-dropdown ul
+    margin: 0
+    padding: 0
+
+div.token-input-dropdown ul li
+    background-color: $mustard
+    list-style-type: none
+    padding: 10px 16px
+
+div.token-input-dropdown ul li.token-input-dropdown-item
+    background-color: white
+
+div.token-input-dropdown ul li.token-input-dropdown-item2
+    background-color: white
+
+div.token-input-dropdown ul li em
+    font-weight: bold
+    font-style: normal
+
+div.token-input-dropdown ul li.token-input-selected-dropdown-item
+    background-color: $mustard
+

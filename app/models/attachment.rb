@@ -8,6 +8,6 @@ class Attachment < ActiveRecord::Base
     self.note ||= File.basename(file.filename, '.*').titleize if file
   end
 
-  default_scope order('created_at ASC')   
+  default_scope { order(created_at: :asc) }
 
 end

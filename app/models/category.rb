@@ -3,7 +3,10 @@ class Category < ActiveRecord::Base
   has_many :post_categories, dependent: :destroy
   has_many :posts, through: :post_categories
 
+  has_many :collections, through: :posts
   has_many :tags, through: :posts
+
+  CATEGORIES = %w[ser-esponja o-la-em-casa pira-na-inspira pe-na-meta pulando-a-cerca]
 
   validates :slug, uniqueness: true, presence: true
 
@@ -17,12 +20,8 @@ class Category < ActiveRecord::Base
     self.slug ||= name.parameterize
   end
 
-  def self.filter(params)
-    if params[:tag]
-      Post.tagged_with(params[:tag])
-    else
-      @posts = Post.scoped(limit: 10)
-    end
+  def self.list
+    CATEGORIES
   end
 
   def self.tokens(query)
@@ -34,5 +33,4 @@ class Category < ActiveRecord::Base
     tokens.gsub!(/<<<(.+?)>>>/) { create!(name: $1).id }
     tokens.split(',')
   end
-
 end

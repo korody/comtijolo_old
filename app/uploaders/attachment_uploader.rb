@@ -2,12 +2,15 @@
 class AttachmentUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::RMagick
+  include CarrierWave::MimeTypes
 
-  if Rails.env.production?
-    storage :fog
-  else
-    storage :file
-  end
+  # if Rails.env.production?
+  #   storage :fog
+  # else
+  #   storage :file
+  # end
+
+  storage :fog
 
   def store_dir
     "#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
@@ -36,5 +39,4 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w(jpg jpeg gif png)
   end
-
 end
