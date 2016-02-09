@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20141108221803) do
   enable_extension "plpgsql"
   enable_extension "unaccent"
 
-  create_table "attachments", force: true do |t|
+  create_table "attachments", force: :cascade do |t|
     t.string   "file"
     t.text     "note"
     t.integer  "attachable_id"
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20141108221803) do
     t.datetime "updated_at"
   end
 
-  add_index "attachments", ["attachable_id", "attachable_type"], name: "index_attachments_on_attachable_id_and_attachable_type", using: :btree
+  add_index "attachments", ["attachable_type", "attachable_id"], name: "index_attachments_on_attachable_type_and_attachable_id", using: :btree
 
-  create_table "categories", force: true do |t|
+  create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.string   "slug"
@@ -36,7 +36,9 @@ ActiveRecord::Schema.define(version: 20141108221803) do
     t.datetime "updated_at"
   end
 
-  create_table "collections", force: true do |t|
+  add_index "categories", ["slug"], name: "index_categories_on_slug", using: :btree
+
+  create_table "collections", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.string   "slug"
@@ -44,19 +46,21 @@ ActiveRecord::Schema.define(version: 20141108221803) do
     t.datetime "updated_at"
   end
 
-  create_table "complementaries", force: true do |t|
+  add_index "collections", ["slug"], name: "index_collections_on_slug", using: :btree
+
+  create_table "complementaries", force: :cascade do |t|
     t.integer  "post_id"
     t.integer  "complement_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "messages", force: true do |t|
+  create_table "messages", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "post_categories", force: true do |t|
+  create_table "post_categories", force: :cascade do |t|
     t.integer  "post_id"
     t.integer  "category_id"
     t.datetime "created_at"
@@ -66,7 +70,7 @@ ActiveRecord::Schema.define(version: 20141108221803) do
   add_index "post_categories", ["category_id"], name: "index_post_categories_on_category_id", using: :btree
   add_index "post_categories", ["post_id"], name: "index_post_categories_on_post_id", using: :btree
 
-  create_table "post_collections", force: true do |t|
+  create_table "post_collections", force: :cascade do |t|
     t.integer  "post_id"
     t.integer  "collection_id"
     t.datetime "created_at"
@@ -76,7 +80,7 @@ ActiveRecord::Schema.define(version: 20141108221803) do
   add_index "post_collections", ["collection_id"], name: "index_post_collections_on_collection_id", using: :btree
   add_index "post_collections", ["post_id"], name: "index_post_collections_on_post_id", using: :btree
 
-  create_table "posts", force: true do |t|
+  create_table "posts", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.text     "content"
@@ -88,9 +92,10 @@ ActiveRecord::Schema.define(version: 20141108221803) do
     t.text     "html"
   end
 
+  add_index "posts", ["slug"], name: "index_posts_on_slug", using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
-  create_table "taggings", force: true do |t|
+  create_table "taggings", force: :cascade do |t|
     t.integer  "post_id"
     t.integer  "tag_id"
     t.datetime "created_at"
@@ -100,14 +105,16 @@ ActiveRecord::Schema.define(version: 20141108221803) do
   add_index "taggings", ["post_id"], name: "index_taggings_on_post_id", using: :btree
   add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
 
-  create_table "tags", force: true do |t|
+  create_table "tags", force: :cascade do |t|
     t.string   "name"
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  add_index "tags", ["slug"], name: "index_tags_on_slug", using: :btree
+
+  create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.text     "bio"
@@ -120,7 +127,9 @@ ActiveRecord::Schema.define(version: 20141108221803) do
     t.datetime "updated_at"
   end
 
-  create_table "videos", force: true do |t|
+  add_index "users", ["slug"], name: "index_users_on_slug", using: :btree
+
+  create_table "videos", force: :cascade do |t|
     t.string   "link"
     t.text     "note"
     t.integer  "filmable_id"
@@ -129,6 +138,6 @@ ActiveRecord::Schema.define(version: 20141108221803) do
     t.datetime "updated_at"
   end
 
-  add_index "videos", ["filmable_id", "filmable_type"], name: "index_videos_on_filmable_id_and_filmable_type", using: :btree
+  add_index "videos", ["filmable_type", "filmable_id"], name: "index_videos_on_filmable_type_and_filmable_id", using: :btree
 
 end

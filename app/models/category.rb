@@ -6,7 +6,7 @@ class Category < ActiveRecord::Base
   has_many :collections, through: :posts
   has_many :tags, through: :posts
 
-  CATEGORIES = %w[ser-esponja o-la-em-casa pira-na-inspira pe-na-meta pulando-a-cerca]
+  CATEGORIES = %w[ser-esponja estar-concreto pensar-acordado criar-contexto explorar-sem-parar]
 
   validates :slug, uniqueness: true, presence: true
 
