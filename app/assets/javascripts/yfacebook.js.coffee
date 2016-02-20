@@ -29,8 +29,6 @@ loadFacebookSDK = ->
 
 initializeFacebookSDK = ->
   FB.init
-    appId     : '518032584925318'
-    channelUrl: '//www.comtijolo.com/channel.html'
-    status    : true
-    cookie    : true
+    appId     : '974042382686128'
     xfbml     : true
+    version   : 'v2.5'
