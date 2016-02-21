@@ -6,7 +6,7 @@ atom_feed do |feed|
     feed.entry post do |entry|
       entry.title post.name
       entry.link post_url(post)
-      entry.summary post.attachments.first.file_url(:regular).to_s
+      entry.summary post.description
       entry.content raw post.html  
       entry.author do |author|
         author.name post.user.name
