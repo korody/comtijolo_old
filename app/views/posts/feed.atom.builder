@@ -11,7 +11,7 @@ atom_feed do |feed|
       entry.author do |author|
         author.name post.user.name
       end
-      entry <<  "<media:thumbnail  xmlns:media='http://search.yahoo.com/mrss/' url='#{post.attachments.first.file_url(:regular).to_s}' height='150' width='300' />"
+      # entry <<  "<media:thumbnail  xmlns:media='http://search.yahoo.com/mrss/' url='#{post.attachments.first.file_url(:regular).to_s}' height='150' width='300' />"
     end
   end
 end
