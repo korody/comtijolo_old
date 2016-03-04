@@ -1,8 +1,6 @@
-# encoding: UTF-8
 class SessionsController < ApplicationController
   
   before_action :disable_extras
-
 
   def new
   end
@@ -13,21 +11,13 @@ class SessionsController < ApplicationController
       sign_in user
       redirect_back_or root_path
     else
-      flash.now[:error] = "Ops! Pera que deu pêra!"
+      flash.now[:warning] = "Ops! Pera que deu pêra!"
       render 'new'
     end
   end
 
   def destroy
     sign_out
-    redirect_to root_path, success: "buenas, schatzi. : )"
+    redirect_to root_path, success: "buenas, schatzi : )"
   end
-
-  private
-
-  def disable_extras
-    @disable_header = true
-    @disable_sidebar = true
-  end
-
 end

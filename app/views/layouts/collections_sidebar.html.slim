@@ -1,3 +1,5 @@
 = content_for :sidebar do
-  = render 'tags/tags'
+  ul.nav.nav-pills
+    = render @tags
+  
 = render file: 'layouts/application'

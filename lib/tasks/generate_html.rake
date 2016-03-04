@@ -1,4 +1,3 @@
-# encoding: UTF-8
 namespace :db do
 
   desc "transform content to html"

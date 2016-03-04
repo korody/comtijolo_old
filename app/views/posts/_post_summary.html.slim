@@ -1,6 +1,7 @@
-- for attachment in post.attachments.take(1)
-  = link_to (image_tag attachment.file_url(:medium).to_s, class: 'img-responsive media-object'), post, class: 'pull-left' if attachment
-.media-body.clearfix
-  h4.media-heading => link_to post.name, post
-  p => truncate strip_tags(post.html), length: 285, separator: ' ', escape: false
-  h6 em #{raw post.categories.pluck(:name, :slug).map { |c| link_to c[0], category_path(c[1]), class: 'category-link' }.join(', ')} sobre #{raw post.tags.pluck(:name, :slug).map { |t| link_to t[0], tag_path(t[1]), class: 'tag-link' }.join(', ')}
+= content_tag 'li', class: "media" do
+  - for attachment in post.attachments.take(1)
+    = link_to (image_tag attachment.file_url(:medium).to_s, class: 'img-responsive media-object'), post, class: 'pull-left' if attachment
+  .media-body.clearfix
+    h4.media-heading => link_to post.name, post
+    p => truncate strip_tags(post.html), length: 285, separator: ' ', escape: false
+    h6 em #{raw post.categories.pluck(:name, :slug).map { |c| link_to c[0], category_path(c[1]), class: 'category-link' }.join(', ')} sobre #{raw post.tags.pluck(:name, :slug).map { |t| link_to t[0], tag_path(t[1]), class: 'tag-link' }.join(', ')}

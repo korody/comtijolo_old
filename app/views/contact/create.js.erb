@@ -10,5 +10,5 @@ var $form = $('.contact-form'),
     $header.text('quer dizer algo mais?');
   }, 2500);
 <% else %>
-  $form.html("<%= j render 'contact/form' %>");
+  $form.html("<%= j render 'contact/form', message: @message %>");
 <% end %>

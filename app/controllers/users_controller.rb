@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @posts = @user.posts.all
+    @user_posts = @user.posts.first(5)
     @categories = Category.select(:name, :slug, :id)
   end
 
@@ -58,11 +58,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :bio, :email, :phone, :password, :attachment_ids, :video_ids, attachments_attributes: [:file, :note, :attachable], videos_attributes: [:title, :note, :link, :filmable])
-  end
-
-  def disable_extras
-    @disable_header = true
-    @disable_sidebar = true
   end
 
   def find_user

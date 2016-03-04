@@ -1,4 +1,16 @@
 pt-BR:
+  activemodel:
+    attributes:
+      message:
+        email: E-mail
+        name: Nome
+        text: Texto
+    errors:
+      models:
+        message:
+          attributes:
+            email: 
+              format: com formato inválido
   date:
     abbr_day_names:
     - Dom

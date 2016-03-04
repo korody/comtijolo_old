@@ -10,6 +10,8 @@ class Collection < ActiveRecord::Base
 
   before_validation :generate_slug
 
+  default_scope { order(created_at: :desc) }
+
   def to_param
     slug
   end

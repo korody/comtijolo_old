@@ -4,6 +4,5 @@
     article
       ul.media-list
         h4 id="#{l month, format: :monthly}" = (l month, format: :monthly_long).upcase
-        - posts.each do |post|
-          = content_tag 'li', class: "media" do
-            = render 'post_summary', post: post
+        = render partial: 'posts/post_summary', collection: posts, as: :post
+        

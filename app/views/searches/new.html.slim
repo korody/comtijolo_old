@@ -1,18 +1,19 @@
 - set_meta_tags site: "comTijolo", title: "blog", description: "vem explorar os tijolos que sustentam nosso estilo de vida ", keywords: "blog posts tijolos casal", og: { title: 'comTijolo', url: 'http://www.comtijolo.com', image: ['https://s3-sa-east-1.amazonaws.com/comtijolo/logo.png'], type: 'article', description: 'relato das reviravoltas das vidas de um casal se virando para construir um lar.' }
+
 .search-index
   - if @posts_query.any?
     article
       h4 posts
       ul.media-list
-        - @posts_query.each do |post|
-          = content_tag 'li', class: "media" do
-            = render 'posts/post_summary', post: post
+        = render partial: 'posts/post_summary', collection: @posts_query, as: :post
+  
   - if @collections_query.any?
     article
       h4 séries
       ul.media-list
         ul.nav.nav-pills
           = render @collections_query
+  
   - if @tags_query.any?
     article
       h4 etiquetas
@@ -20,5 +21,6 @@
         ul.nav.nav-pills
           - @tags_query.each do |tag|
             li = link_to tag.name, tag_path(tag)
+
   - unless @posts_query.any? || @tags_query.any? || @collections_query.any?
     h4.header ops! não encontrarmos nada. Tenta de novo? : P

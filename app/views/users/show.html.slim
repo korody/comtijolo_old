@@ -5,6 +5,4 @@
     article
       h4 o que ando escrevendo
     ul.media-list
-      - @posts.first(5).each do |post|
-        = content_tag 'li', class: "media" do
-          = render 'posts/post_summary', post: post
+      = render partial: 'posts/post_summary', collection: @user_posts, as: :post

@@ -1,14 +1,13 @@
-# encoding: utf-8
 class AttachmentUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::RMagick
   include CarrierWave::MimeTypes
 
-  # if Rails.env.production?
-  #   storage :fog
-  # else
-  #   storage :file
-  # end
+  if Rails.env.production?
+    storage :fog
+  else
+    storage :file
+  end
 
   storage :fog
 

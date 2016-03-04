@@ -44,7 +44,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @complements = @post.complements.all
   end
 
   def update

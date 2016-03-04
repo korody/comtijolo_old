@@ -1,7 +1,7 @@
 = render 'errors', object: message
-= form_for message, url: contact_path, remote: true do |f|
+= form_for @message, url: contact_path, remote: true do |f|
   = f.text_field :name, class: 'form-control input-lg', placeholder: 'nome'
   = f.email_field :email ,class: 'form-control input-lg', placeholder:'e-mail'
-  = f.text_area :text, class: 'form-control input-lg', rows: 6, placeholder:'diga o que quiser dizer'
+  = f.text_area :text, class: 'form-control input-lg', rows: 6, placeholder:'diga o que quer dizer'
   button type='submit button' class= 'btn btn-lg btn-default btn-block' id= 'send-message' data-loading-text= "enviando..." data-complete-text="mensagem enviada : )" autocomplete='off'
     | enviar

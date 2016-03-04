@@ -1,6 +1,0 @@
-article
-  h4 posts recentes
-  ul.media-list
-    - @recent_posts.each_with_index do |post, i|
-      = content_tag 'li', class: "media #{i == 0 ? 'hidden' : ''} #{i == 1 ? 'hidden' : ''} #{i == 2 ? 'hidden' : ''}" do
-        = render 'post_summary', post: post, i: i
