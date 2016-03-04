@@ -1,5 +1,6 @@
+@import 'layout/presets'
+
 body
-  background-color: $base
   height: 100%
 
 #wrap
@@ -11,26 +12,8 @@ body
 
 .header
 
-  .header-toolbar
-    max-height: 300px
-    min-height: 300px
-    overflow: hidden
-
-    .page-header
-      border: 0
-      margin: 0
-      padding: 100px 0 0 20px
-
-    p
-      margin: 0
-
-    span
-      position: absolute
-      right: 0
-      top: 120px
-
   .nav-tabs-justified > li > a, .nav-tabs.nav-justified > li > a
-    border-bottom: 1px solid $base
+    border-bottom: none
 
     &#ser-esponja
       background: url('ser.png') no-repeat center 
@@ -59,50 +42,51 @@ body
     &#contact
       background: url('contato.png') no-repeat center
 
-.header-description
+    &:hover
+      border: 1px solid transparent
+      border-bottom: none
+
+.subheader
+  border: 1px solid $comtijolo-light
+  border-radius: 4px
+  margin-bottom: $margin-lg
+  padding: $padding-sm $padding-md
+
+  h1
+    margin: 0
+
+.subheader-description
   font-size: 17px
   line-height: 1.7
+  margin-top: $margin-md
 
-.contact-container
-  margin-top: 30px
+article
+  margin-top: $margin-xl
 
-.page-logo
-  min-height: 300px
-  
-.search-form
+  h4
+    color: $text-light
+    margin-bottom: 20px
 
-  form
-    margin: 0
-    padding: 3px 0
+  .sidebar-post
+    margin-bottom: $margin-sm
 
-  input#query
-    background-color: transparent
-    border: 0
-    border-left: 1px solid $comtijolo
-    box-shadow: none
+    ul
+      padding: 0
 
-  .btn.btn-default
-    background-color: $base
-    border: 0
-    border-right: 1px solid $comtijolo
+      li
+        position: relative
 
-.sidebar
-  margin-top: 28px
+    h4
+      bottom: 0
+      position: absolute
+      left: 0
+      margin: 0
+      padding: 20px
+      width: 100%
 
-ul.nav-pills
-  font-family: $font-family-sans-serif
-  letter-spacing: 1.2px
-
-  li
-    border: 2px solid white
-    margin: 0 2px 2px 0
-
-    a:hover
-      background-color: white
-
-    &:active a, &.active a
-      color: $comtijolo
-
+      a
+        color: white
+        
 .new_message
 
   input, textarea, .btn-default
@@ -115,19 +99,12 @@ ul.nav-pills
     text-align: left
     text-indent: 15px
 
-.fb-like
-  border: 2px solid white
-  border-top: 0
-  display: inline-block
-  margin-bottom: 60px
-  padding: 20px
-  width: 100%
-
 #push, #footer
   height: 160px
   position: relative
 
 #footer
+
   color: $text-light
   width: 1170px
   
@@ -156,8 +133,6 @@ ul.nav-pills
     a
       color: $text-light
 
-      &:hover
-        background-color: $base
 
 // EDIT PAGES
 
@@ -188,7 +163,7 @@ textarea#post_content, textarea#post_description, textarea#user_bio, textarea#co
     position: absolute
 
   .progress
-    background-color: $base
+    background-color: $comtijolo-light
     height: 45px
     margin: 8px 0 0
     padding: 0 !important
@@ -231,11 +206,11 @@ textarea#post_content, textarea#post_description, textarea#user_bio, textarea#co
     text-indent: 20px
 
   .button-collapse
-    border-left: 1px solid $border
+    border-left: 1px solid $comtijolo-light
     display: none
 
     input.form-control, textarea.form-control
-      border: 1px solid $border
+      border: 1px solid $comtijolo-light
       border-bottom: 1px solid white
       border-left: 1px solid white
       border-right: 1px solid white

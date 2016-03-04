@@ -3,14 +3,16 @@
 .posts-index
   = render @post
 
-.post-further-readings
-  = render partial: 'posts/collection', collection: @post.collections
+- if @post.collections.any?
+  .post-further-readings
+    = render partial: 'posts/collection', collection: @post.collections
 
-.post-further-readings
-  article
-    h4 leitura complementar
-    ul.media-list
-      = render partial: 'post_summary', collection: @post.complements, as: :post
+- if @post.complements.any?
+  .post-further-readings
+    article
+      h4 leitura complementar
+      ul.media-list
+        = render partial: 'post_summary', collection: @post.complements, as: :post
 
 .post-comments
   = render 'layouts/disqus'

@@ -1,17 +1,6 @@
-.visible-xs.visible-sm
-  .col-lg-12
+.clearfix.margin-vertical-xxl
+  .visible-xs.visible-sm
     .page-logo
       = link_to (image_tag 'logo.png', class: 'img-responsive'), root_path
-.visible-lg.visible-sm      
-  .col-lg-7
-    .header-toolbar
-      = render 'header_toolbar'
-.visible-lg
-  .col-lg-4.col-lg-offset-1
-    .page-logo
-      = link_to (image_tag 'logo.png', class: 'img-responsive'), root_path
-.col-lg-7
-    = render 'subheader'
-.col-lg-4.col-lg-offset-1
-  .search-form
-    = render 'search'
+
+  = render 'menu'

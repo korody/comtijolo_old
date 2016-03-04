@@ -15,7 +15,32 @@ $pagination-bg: transparent;
 $pagination-hover-bg: white;
 $pagination-border: white;
 $pagination-hover-border: #DDD;
-$pagination-active-border: $border;
-$pagination-disabled-border: $border;
+$pagination-active-border: $comtijolo-light;
+$pagination-disabled-border: $comtijolo-light;
 $pagination-active-color: $comtijolo;
-$pagination-active-bg: white; 
+$pagination-active-bg: white;
+
+p {
+  color: $text;
+}
+
+ul {
+  margin: 0;
+  
+  li {
+    list-style-type: none;
+  }
+}
+
+a, .btn.btn-default {
+  color: $comtijolo;
+
+  &:hover, &:focus {
+    color: $text;
+    text-decoration: none !important;
+  }
+}
+
+.fa {
+  padding-right: 4px;
+}

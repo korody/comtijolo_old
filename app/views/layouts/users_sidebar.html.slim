@@ -1,5 +1,7 @@
 = content_for :sidebar do
   article
     h4 explore nossas categorias 
-    = render 'categories/categories'
+    ul.nav.nav-pills
+      = render @categories
+
 = render file: 'layouts/application'

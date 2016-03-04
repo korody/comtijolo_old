@@ -1,4 +1,10 @@
 - set_meta_tags site: "comTijolo", title: @tag.name, keywords: @tag.name, og: { title: 'comTijolo', url: 'http://www.comtijolo.com/tags/#{@tag.name.parameterize}', image: ['https://s3-sa-east-1.amazonaws.com/comtijolo/logo.png'], type: 'article' }
+
+.subheader
+  h1
+    span etiqueta
+    span &nbsp;##{@tag.name}
+
 .posts-index
   - @posts.each do |post|
     = render post

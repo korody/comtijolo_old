@@ -1,5 +1,5 @@
-ul.nav.nav-pills
-  li = link_to "o casal", casal_path, title: 'sobre o casal'
-  li = link_to "kalina", user_path('kalina-juzwiak'), title: 'sobre a kalina'
-  li = link_to "marcos", user_path('marcos-korody'), title: 'sobre o marcos'
-  li = link_to "contato", contato_path, title: 'diga olá'
+ul.nav.nav-tabs.nav-justified
+  li = link_to ".", casal_path, id: 'casal', title: 'sobre o casal'
+  li = link_to ".", user_path('kalina-juzwiak'), id: 'kj', title: 'sobre a kalina'
+  li = link_to ".", user_path('marcos-korody'), id: 'mk', title: 'sobre o marcos'
+  li = link_to ".", contato_path, id: 'contact', title: 'diga olá'

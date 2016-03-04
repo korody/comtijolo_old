@@ -1,25 +1,36 @@
-article
-  
-  .sidebar-post
-    margin-bottom: 30px
-
-    ul
-      padding: 0
-
-      li
-        position: relative
-
-    h4
-      bottom: 0
-      position: absolute
-      left: 0
-      margin: 0
-      padding: 20px
-      width: 100%
-
-      a
-        color: white
+.page-logo
+  min-height: 400px
+  padding-top: 6px
 
 p.sidebar_intro
   visibility: hidden
   position: absolute
+
+.search-form
+  form
+    margin: 0
+
+  input#query
+    background-color: transparent
+    border: 0
+    border-left: 1px solid $comtijolo
+    box-shadow: none
+
+  .btn.btn-default
+    border: 0
+    border-right: 1px solid $comtijolo
+
+ul.nav-pills
+  font-family: $font-family-sans-serif
+  letter-spacing: 1.2px
+
+  li
+    border: 1px solid $comtijolo-light
+    margin: 0 2px 2px 0
+
+    a:hover
+      background-color: $comtijolo-light
+
+    &:hover a, &:active a, &.active a
+      background-color: $comtijolo
+      color: white

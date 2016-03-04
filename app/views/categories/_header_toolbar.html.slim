@@ -1,6 +1,0 @@
-.page-header
-  p.lead.text-muted.pull-left categoria
-  h1 &nbsp;#{@category.name}
-  .header-description => markdown @category.description if @category.description
-  - if signed_in?
-    span => link_to icon_tag('gear'), edit_category_path

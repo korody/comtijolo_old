@@ -1,32 +1,38 @@
-.margin-bottom-lg
+.margin-vertical-xxl
+  .page-logo
+    = link_to (image_tag 'logo.png', class: 'img-responsive'), root_path
   = yield :sidebar
 
-article
-  h4 descubra nossas séries
-  ul.nav.nav-pills
-    = render @collections
+  article.search-form
+    h4 encontre o que procura
+    = render 'search'
 
-article
-  h4 comTijolo recomenda
-  = render partial: 'posts/recommended', collection: @recommended, as: :post
-
-article
-  h4 tijolo com tijolo
-  ul.nav.nav-pills
-    - @posts_by_month.each do |month, posts|
-      li = link_to (l month, format: :monthly).upcase, archive_posts_path(anchor: "#{l month, format: :monthly}")
-
-article
-  h4 @comTijolo no instagram
-  - @instagram.each do |media_item|
-    = link_to image_tag(media_item.images.thumbnail.url), 'http://instagram.com/comtijolo', target: '_blank', title: "espiar instagram do comTijolo"  
-
-article
-  h4 comTijolo no facebook
-  .fb-like-box data-href='http://www.facebook.com/comtijolo' data-height='400' data-width='300' data-colorscheme='light' data-show-faces='true' data-header='false' data-stream='false' data-show-border='false'
-
-- if controller_name == "posts"
   article
-    h4 diga olá
-    .contact-form
-      = render 'contact/form', message: @message
+    h4 descubra nossas séries
+    ul.nav.nav-pills
+      = render @collections
+
+  article
+    h4 comTijolo recomenda
+    = render partial: 'posts/recommended', collection: @recommended, as: :post
+
+  article
+    h4 tijolo com tijolo
+    ul.nav.nav-pills
+      - @posts_by_month.each do |month, posts|
+        li = link_to (l month, format: :monthly).upcase, archive_posts_path(anchor: "#{l month, format: :monthly}")
+
+  article
+    h4 @comTijolo no instagram
+    - @instagram.each do |media_item|
+      = link_to image_tag(media_item.images.thumbnail.url), 'http://instagram.com/comtijolo', target: '_blank', title: "espiar instagram do comTijolo"  
+
+  article
+    h4 comTijolo no facebook
+    .fb-like-box data-href='http://www.facebook.com/comtijolo' data-height='400' data-width='300' data-colorscheme='light' data-show-faces='true' data-header='false' data-stream='false' data-show-border='false'
+
+  - unless controller_name == "contact" || controller_name == "users"
+    article
+      h4 diga olá
+      .contact-form
+        = render 'contact/form', message: @message

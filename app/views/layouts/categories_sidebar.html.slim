@@ -1,7 +1,9 @@
 = content_for :sidebar do
   = category_photo(@category.slug)
 
-  ul.nav.nav-pills
-    = render @tags
+  article
+    h4 tags nesta categoria
+    ul.nav.nav-pills
+      = render @tags
     
 = render file: 'layouts/application'

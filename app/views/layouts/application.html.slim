@@ -15,16 +15,14 @@ html
     #wrap
       .container
         .row
-          = render 'flash'
-          .header
-            = render 'header' unless @disable_header
-          .wall
-            .col-lg-7
-              = yield
-            .col-lg-4.col-lg-offset-1
-              .sidebar
-                = render 'layouts/sidebar' unless @disable_sidebar
-                = yield :markdown_guide
+          .wall.col-lg-7
+            = render 'flash'
+            .header
+              = render 'header' unless @disable_header
+            = yield
+          .sidebar.col-lg-4.col-lg-offset-1
+            = render 'layouts/sidebar' unless @disable_sidebar
+            = yield :markdown_guide
       = render 'layouts/disqus_count'
       #push
     = render 'layouts/footer'
