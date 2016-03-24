@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.paginate(page: params[:page], per_page: 3)
-    @recent_posts = Post.select(:name, :slug, :html, :id).first(6)
+    @recent_posts = Post.select(:name, :slug, :html, :id).drop(3).first(6)
   end
 
   def archive
