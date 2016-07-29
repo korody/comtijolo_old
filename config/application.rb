@@ -24,14 +24,14 @@ module Comtijolo
     config.action_mailer.smtp_settings = {
       :address              => "smtp.gmail.com",
       :port                 => 587,
-      :domain               => "comtijolo.com",
-      :user_name            => "tijolo@comtijolo.com",
-      :password             => "honeypie",
+      :domain               => "aerogami.com.br",
+      :user_name            => "korody@aerogami.com.br",
+      :password             => "ActAhead#7",
       :authentication       => :plain,
       :enable_starttls_auto => true
     }
 
-    config.action_mailer.default_url_options = { host: 'comtijolo.com' }
+    config.action_mailer.default_url_options = { host: 'aerogami.com.br' }
 
   end
 end
